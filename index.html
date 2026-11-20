@@ -7,7 +7,7 @@
   <link rel="icon" type="image/jpeg" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Fira+Code:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Marck+Script&family=Noto+Sans+SC:wght@400;500;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0c10;
@@ -22,6 +22,7 @@
       --gold-dim: rgba(212, 175, 55, 0.16);
       --green: #3fb950;
       --mono: 'JetBrains Mono', monospace;
+      --tech-font: 'Space Grotesk', 'Share Tech Mono', 'JetBrains Mono', 'Noto Sans SC', sans-serif;
       --gothic-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
       --gothic-desc: 'Cormorant Garamond', 'Inter', 'Noto Sans SC', Georgia, serif;
       --sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -485,19 +486,21 @@
       flex-wrap: wrap;
     }
 
-    /* Фото разработчика — без пустых углов, правый блок расширен */
+    /* Фото разработчика — меньше на 20%, одинаковая высота с правым блоком */
     .avatar-card {
       grid-column: span 4;
-      padding: 12px;
+      height: 100%;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .avatar-frame {
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
       flex: 1 1 auto;
-      min-height: 280px;
+      min-height: 240px;
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border-accent);
@@ -527,12 +530,109 @@
       align-items: center;
     }
 
-    /* Hero — расширен на освободившееся место справа */
+    /* Hero — готический заголовок бренда, курсив и выравнивание по ширине как в Word */
     .hero-card {
       grid-column: span 8;
+      height: 100%;
+      padding: 24px 36px 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 18px;
+    }
+
+    .hero-card > div:first-child {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .hero-card .hero-desc {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      width: 100%;
+      max-width: 100%;
+      font-size: 19.5px;
+      line-height: 1.62;
+      word-spacing: 0.08em;
+      text-align: justify;
+      text-justify: inter-word;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .hero-card .hero-desc p {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      width: 100%;
+      max-width: 100%;
+      font-size: 19.5px;
+      line-height: 1.62;
+      word-spacing: 0.08em;
+      text-align: justify;
+      text-justify: inter-word;
+      margin-bottom: 14px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+    .hero-card .hero-desc ul {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      width: calc(100% - 8px);
+      max-width: 100%;
+      margin: 8px 4px 18px 22px;
+      padding-left: 6px;
+      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .hero-card .hero-desc li {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      width: 100%;
+      max-width: 100%;
+      font-size: 18.5px;
+      line-height: 1.6;
+      word-spacing: 0.07em;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .hero-card .hero-desc strong {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+
+    .hero-brand-highlight {
+      font-family: var(--gothic-display);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 1.736em;
+      line-height: 1.05;
+      letter-spacing: 0.045em;
+      word-spacing: 0.14em;
+      background: linear-gradient(135deg, #fff1b8 0%, #f5d87d 45%, #d4af37 85%, #a8821d 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: var(--gold-bright);
+      -webkit-text-fill-color: transparent;
+      padding: 0 6px;
+      border-bottom: 1px solid rgba(245, 216, 125, 0.42);
+      border-radius: 4px;
+      filter:
+        drop-shadow(0 2px 3px rgba(0, 0, 0, 0.92))
+        drop-shadow(0 0 14px rgba(212, 175, 55, 0.42))
+        drop-shadow(0 0 26px rgba(245, 216, 125, 0.2));
+      display: inline-block;
+      vertical-align: -0.1em;
     }
 
     .hero-title {
@@ -1185,23 +1285,18 @@
       </aside>
 
       <!-- ГЛАВНЫЙ БЛОК HERO (РЕДАКТИРУЕМЫЙ) -->
-      <section class="card hero-card anim-reveal" data-azm="035">
+            <section class="card hero-card anim-reveal" data-azm="035">
         <div>
-          <div class="card-label">
-            <span>// VECTOR & ARCHITECTURE</span>
-            <span id="hero-coords-live">BEARING LOCK: 035° · 48.20° N, 16.37° E</span>
-          </div>
-          <h1 class="hero-title"><span class="gothic-brand">Kaiser Azimuth</span> — <span id="hero-role-text" data-i18n="hero_role">независимый разработчик программных систем, утилит и других чудес цифровых миров.</span></h1>
           <div class="hero-desc gothic-desc" data-i18n="hero_desc">
-            <p style="margin-bottom: 12px;">Kaiser Azimuth — независимый разработчик программных систем, утилит и других чудес цифровых миров. Работаю ради чистоты архитектуры, поиска нестандартных решений и самого процесса созидания.</p>
-            <p style="margin-bottom: 14px;">Верю в программы, которые уважают ресурсы устройства и время человека: минимум визуального шума, максимум пользы, предсказуемость в работе и внимание к деталям. Пока делаю всё это больше для себя, для души — ну а дальше всё может быть...</p>
-            <p style="margin-bottom: 8px; font-weight: 600; color: var(--gold-bright);">Направления работы:</p>
+            <p style="margin-bottom: 12px;"><span class="hero-brand-highlight">Kaiser Azimuth</span> — независимый архитектор программных систем, утилит и иных явлений цифровой материи. Творю ради безупречной чистоты кода, нетривиальной инженерной мысли и самого искусства созидания.</p>
+            <p style="margin-bottom: 14px;">Я убеждён, что истинное мастерство проявляется в уважении к ресурсам машины и времени человека: ни грамма визуального шума, абсолютная целесообразность, детерминированность в работе и трепетное отношение к деталям.</p>
+            <p style="margin-bottom: 8px; font-weight: 600; color: var(--gold-bright);">Сферы приложения усилий:</p>
             <ul style="margin: 0 0 18px 20px; display: flex; flex-direction: column; gap: 6px;">
-              <li><strong>Android &amp; Windows</strong> — нативные программные решения и прикладные инструменты для мобильных и десктопных сред.</li>
-              <li><strong>Веб-разработка и сайты</strong> — проектирование веб-пространств, цифровых платформ и интерактивных систем.</li>
-              <li><strong>Скрипты и автоматизация</strong> — автономные программные модули и инструменты оптимизации рабочих процессов.</li>
-              <li><strong>Искусственный интеллект</strong> — работа с генеративными моделями и алгоритмами машинного интеллекта.</li>
-              <li><strong>Криптовалюты и Web3</strong> — демистификация децентрализованных технологий: проектирование прикладной инфраструктуры, интегрирующей протоколы Web3 в повседневную цифровую среду.</li>
+              <li><strong>Android &amp; Windows</strong> — нативные программные решения и выверенный инструментарий для мобильных и десктопных экосистем.</li>
+              <li><strong>Веб-архитектура</strong> — проектирование эстетичных цифровых пространств, платформ и интерактивных сред.</li>
+              <li><strong>Скрипты и автоматизация</strong> — автономные программные механизмы, освобождающие разум от рутины и оттачивающие рабочие процессы.</li>
+              <li><strong>Искусственный интеллект</strong> — исследование генеративных моделей и укрощение алгоритмов машинного интеллекта.</li>
+              <li><strong>Криптовалюты и Web3</strong> — демистификация децентрализованных технологий: создание прикладной инфраструктуры, органично вплетающей протоколы Web3 в повседневную цифровую реальность.</li>
             </ul>
           </div>
         </div>
@@ -1533,8 +1628,7 @@
       "nav_stack": "Стек",
       "nav_contact": "Связь",
       "nav_donate": "Донат",
-      "hero_role": "независимый разработчик программных систем, утилит и других чудес цифровых миров.",
-      "hero_desc": "Kaiser Azimuth — независимый разработчик программных систем, утилит и других чудес цифровых миров. Работаю ради чистоты архитектуры, поиска нестандартных решений и самого процесса созидания.<br><br>Верю в программы, которые уважают ресурсы устройства и время человека: минимум визуального шума, максимум пользы, предсказуемость в работе и внимание к деталям. Пока делаю всё это больше для себя, для души — ну а дальше всё может быть...<br><br><strong>Направления работы:</strong><br>• Android &amp; Windows — нативные программные решения и прикладные инструменты для мобильных и десктопных сред.<br>• Веб-разработка и сайты — проектирование веб-пространств, цифровых платформ и интерактивных систем.<br>• Скрипты и автоматизация — автономные программные модули и инструменты оптимизации рабочих процессов.<br>• Искусственный интеллект — работа с генеративными моделями и алгоритмами машинного интеллекта.<br>• Криптовалюты и Web3 — демистификация децентрализованных технологий: проектирование прикладной инфраструктуры, интегрирующей протоколы Web3 в повседневную цифровую среду.",
+            "hero_desc": "<span class=\"hero-brand-highlight\">Kaiser Azimuth</span> — независимый архитектор программных систем, утилит и иных явлений цифровой материи. Творю ради безупречной чистоты кода, нетривиальной инженерной мысли и самого искусства созидания.<br><br>Я убеждён, что истинное мастерство проявляется в уважении к ресурсам машины и времени человека: ни грамма визуального шума, абсолютная целесообразность, детерминированность в работе и трепетное отношение к деталям.<br><br><strong>Сферы приложения усилий:</strong><br>• <strong>Android &amp; Windows</strong> — нативные программные решения и выверенный инструментарий для мобильных и десктопных экосистем.<br>• <strong>Веб-архитектура</strong> — проектирование эстетичных цифровых пространств, платформ и интерактивных сред.<br>• <strong>Скрипты и автоматизация</strong> — автономные программные механизмы, освобождающие разум от рутины и оттачивающие рабочие процессы.<br>• <strong>Искусственный интеллект</strong> — исследование генеративных моделей и укрощение алгоритмов машинного интеллекта.<br>• <strong>Криптовалюты и Web3</strong> — демистификация децентрализованных технологий: создание прикладной инфраструктуры, органично вплетающей протоколы Web3 в повседневную цифровую реальность.",
       "btn_projects": "К проектам →",
       "btn_donate": "Поддержать криптой",
       "btn_contact": "Контакты",
@@ -1570,8 +1664,7 @@
             "nav_stack": "Stack",
             "nav_contact": "Contact",
             "nav_donate": "Donate",
-            "hero_role": "independent developer of software systems, utilities, and other wonders of digital worlds.",
-            "hero_desc": "Kaiser Azimuth — independent developer of software systems, utilities, and other wonders of digital worlds. I build for architectural clarity, unconventional solutions, and the joy of creation itself.<br><br>I believe in software that respects device resources and human time: minimal visual noise, maximum utility, predictable behavior, and attention to detail. For now I do this mostly for myself and for the soul — and we'll see what comes next...<br><br><strong>Focus areas:</strong><br>• Android &amp; Windows — native software solutions and practical tools for mobile and desktop environments.<br>• Web development &amp; websites — designing web spaces, digital platforms, and interactive systems.<br>• Scripts &amp; automation — autonomous software modules and workflow optimization tools.<br>• Artificial intelligence — working with generative models and machine intelligence algorithms.<br>• Cryptocurrencies &amp; Web3 — demystifying decentralized technologies: designing applied infrastructure that integrates Web3 protocols into everyday digital environments.",
+                        "hero_desc": "<span class=\"hero-brand-highlight\">Kaiser Azimuth</span> — independent architect of software systems, utilities, and other manifestations of digital matter. I create for immaculate code clarity, non-trivial engineering thought, and the art of creation itself.<br><br>I am convinced that true craftsmanship shows in respect for machine resources and human time: zero visual noise, absolute purposefulness, deterministic execution, and care for every detail.<br><br><strong>Areas of focus:</strong><br>• Android &amp; Windows — native software solutions and refined tooling for mobile and desktop ecosystems.<br>• Web architecture — designing aesthetic digital spaces, platforms, and interactive environments.<br>• Scripts &amp; automation — autonomous software mechanisms that free the mind from routine and sharpen workflows.<br>• Artificial intelligence — exploring generative models and taming machine intelligence algorithms.<br>• Cryptocurrencies &amp; Web3 — demystifying decentralized technologies: building applied infrastructure that weaves Web3 protocols organically into everyday digital reality.",
             "btn_projects": "To projects →",
             "btn_donate": "Support with crypto",
             "btn_contact": "Contacts",
@@ -1605,8 +1698,7 @@
             "nav_stack": "Stack",
             "nav_contact": "Kontakt",
             "nav_donate": "Spenden",
-            "hero_role": "unabhängiger Entwickler von Softwaresystemen, Dienstprogrammen und anderen Wundern digitaler Welten.",
-            "hero_desc": "Kaiser Azimuth — unabhängiger Entwickler von Softwaresystemen, Dienstprogrammen und anderen Wundern digitaler Welten. Ich arbeite für architektonische Klarheit, unkonventionelle Lösungen und die Freude am Erschaffen selbst.<br><br>Ich glaube an Programme, die Geräteressourcen und menschliche Zeit respektieren: minimaler visueller Lärm, maximaler Nutzen, vorhersehbares Verhalten und Liebe zum Detail. Vorerst mache ich das vor allem für mich selbst und aus Leidenschaft — mal sehen, was kommt...<br><br><strong>Arbeitsbereiche:</strong><br>• Android &amp; Windows — native Softwarelösungen und praktische Werkzeuge für Mobil- und Desktop-Umgebungen.<br>• Webentwicklung &amp; Websites — Gestaltung von Webräumen, digitalen Plattformen und interaktiven Systemen.<br>• Skripte &amp; Automatisierung — autonome Softwaremodule und Werkzeuge zur Arbeitsablaufoptimierung.<br>• Künstliche Intelligenz — Arbeit mit generativen Modellen und Algorithmen maschineller Intelligenz.<br>• Kryptowährungen &amp; Web3 — Entmystifizierung dezentraler Technologien: Entwicklung angewandter Infrastruktur, die Web3-Protokolle in den digitalen Alltag integriert.",
+                        "hero_desc": "<span class=\"hero-brand-highlight\">Kaiser Azimuth</span> — unabhängiger Architekt für Softwaresysteme, Dienstprogramme und andere Erscheinungsformen digitaler Materie. Ich erschaffe für makellose Code-Klarheit, nicht-triviale Ingenieurskunst und die Kunst des Schaffens selbst.<br><br>Ich bin überzeugt, dass sich wahre Meisterschaft im Respekt vor Maschinenressourcen und menschlicher Zeit zeigt: kein Gramm visuelles Rauschen, absolute Zweckmäßigkeit, Determinismus im Betrieb und Liebe zum Detail.<br><br><strong>Schwerpunkte:</strong><br>• Android &amp; Windows — native Softwarelösungen und abgestimmte Werkzeuge für Mobile- und Desktop-Ökosysteme.<br>• Web-Architektur — Gestaltung ästhetischer digitaler Räume, Plattformen und interaktiver Umgebungen.<br>• Skripte &amp; Automatisierung — autonome Softwaremechanismen, die den Geist von Routine befreien und Arbeitsabläufe schärfen.<br>• Künstliche Intelligenz — Erforschung generativer Modelle und Beherrschung von Algorithmen maschineller Intelligenz.<br>• Kryptowährungen &amp; Web3 — Entmystifizierung dezentraler Technologien: Aufbau angewandter Infrastruktur, die Web3-Protokolle organisch in den digitalen Alltag einbindet.",
             "btn_projects": "Zu den Projekten →",
             "btn_donate": "Mit Krypto unterstützen",
             "btn_contact": "Kontakte",
@@ -1640,8 +1732,7 @@
             "nav_stack": "技术栈",
             "nav_contact": "联系",
             "nav_donate": "赞赏",
-            "hero_role": "独立软件系统、实用工具与数字世界奇妙造物的开发者。",
-            "hero_desc": "Kaiser Azimuth —— 独立软件系统、实用工具与数字世界奇妙造物的开发者。我追求清晰的架构、非常规的解决方案，以及创造过程本身带来的纯粹乐趣。<br><br>我相信真正优秀的程序应当尊重设备资源与人的时间：减少视觉噪音、最大化实用价值、保持运行的可预测性并注重细节。目前这一切更多是为了自己与热爱而做 —— 至于未来，一切皆有可能……<br><br><strong>工作方向：</strong><br>• Android 与 Windows —— 面向移动端与桌面环境的原生软件方案及实用工具。<br>• Web 开发与网站 —— 构建网络空间、数字平台与交互系统。<br>• 脚本与自动化 —— 自主运行的软件模块与工作流优化工具。<br>• 人工智能 —— 探索生成式模型与机器智能算法。<br>• 加密货币与 Web3 —— 祛魅去中心化技术：打造将 Web3 协议融入日常数字环境的应用基础设施。",
+                        "hero_desc": "<span class=\"hero-brand-highlight\">Kaiser Azimuth</span> —— 软件系统、实用工具及其他数字物质形态的独立架构师。我为无瑕的代码纯度、非同凡响的工程思维以及创造艺术本身而构建。<br><br>我坚信真正的大师之道在于尊重机器算力与人的时间：零视觉噪音、绝对的合宜性、可预测的确定性运行以及对细节的珍视。<br><br><strong>专注领域：</strong><br>• Android 与 Windows —— 面向移动端与桌面生态的原生软件方案与精炼工具集。<br>• Web 架构 —— 设计兼具美感的数字空间、平台与交互环境。<br>• 脚本与自动化 —— 将思维从日常琐事中解放并打磨工作流的自主软件机制。<br>• 人工智能 —— 探索生成式模型与驾驭机器智能算法。<br>• 加密货币与 Web3 —— 祛魅去中心化技术：构建将 Web3 协议自然融入日常数字现实的应用基础设施。",
             "btn_projects": "前往项目 →",
             "btn_donate": "加密货币支持",
             "btn_contact": "联系方式",
@@ -1675,8 +1766,7 @@
             "nav_stack": "Stack",
             "nav_contact": "Contact",
             "nav_donate": "Don",
-            "hero_role": "développeur indépendant de systèmes logiciels, d'utilitaires et d'autres merveilles des mondes numériques.",
-            "hero_desc": "Kaiser Azimuth — développeur indépendant de systèmes logiciels, d'utilitaires et d'autres merveilles des mondes numériques. Je travaille pour la clarté de l'architecture, la recherche de solutions non conventionnelles et le plaisir même de créer.<br><br>Je crois aux programmes qui respectent les ressources de l'appareil et le temps humain : un minimum de bruit visuel, un maximum d'utilité, une grande prévisibilité et une attention portée aux détails. Pour l'instant, je fais tout cela surtout pour moi et par passion — et la suite reste ouverte...<br><br><strong>Domaines d'activité :</strong><br>• Android &amp; Windows — solutions logicielles natives et outils pratiques pour environnements mobiles et bureau.<br>• Développement web &amp; sites — conception d'espaces web, de plateformes numériques et de systèmes interactifs.<br>• Scripts &amp; automatisation — modules logiciels autonomes et outils d'optimisation des flux de travail.<br>• Intelligence artificielle — travail avec les modèles génératifs et les algorithmes d'intelligence machine.<br>• Cryptomonnaies &amp; Web3 — démystification des technologies décentralisées : conception d'infrastructures appliquées intégrant les protocoles Web3 dans l'environnement numérique quotidien.",
+                        "hero_desc": "<span class=\"hero-brand-highlight\">Kaiser Azimuth</span> — architecte indépendant de systèmes logiciels, d'utilitaires et d'autres phénomènes de la matière numérique. Je crée pour la clarté irréprochable du code, une pensée d'ingénierie peu commune et l'art même de la création.<br><br>Je suis convaincu que la vraie maîtrise se manifeste dans le respect des ressources de la machine et du temps humain : aucun bruit visuel, une pertinence absolue, un fonctionnement déterministe et une attention délicate aux détails.<br><br><strong>Axes d'effort :</strong><br>• Android &amp; Windows — solutions logicielles natives et outillage précis pour écosystèmes mobiles et de bureau.<br>• Architecture web — conception d'espaces numériques esthétiques, de plateformes et d'environnements interactifs.<br>• Scripts &amp; automatisation — mécanismes logiciels autonomes libérant l'esprit de la routine et affûtant les flux de travail.<br>• Intelligence artificielle — exploration des modèles génératifs et maîtrise des algorithmes d'intelligence machine.<br>• Cryptomonnaies &amp; Web3 — démystification des technologies décentralisées : création d'une infrastructure appliquée intégrant naturellement les protocoles Web3 au quotidien numérique.",
             "btn_projects": "Vers les projets →",
             "btn_donate": "Soutenir en crypto",
             "btn_contact": "Contacts",
