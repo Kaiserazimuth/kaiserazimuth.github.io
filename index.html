@@ -1528,204 +1528,242 @@
   </footer>
 
   <script>
-    const I18N = {
-      ru: {
-        nav_projects: "Проекты",
-        nav_stack: "Стек",
-        nav_contact: "Связь",
-        nav_donate: "Донат",
-        hero_role: "независимый разработчик программных систем, утилит и других чудес цифровых миров.",
-        hero_desc: "Kaiser Azimuth — независимый разработчик программных систем, утилит и других чудес цифровых миров. Работаю ради чистоты архитектуры, поиска нестандартных решений и самого процесса созидания.<br><br>Верю в программы, которые уважают ресурсы устройства и время человека: минимум визуального шума, максимум пользы, предсказуемость в работе и внимание к деталям. Пока делаю всё это больше для себя, для души — ну а дальше всё может быть...<br><br><strong>Направления работы:</strong><br>• Android &amp; Windows — нативные программные решения и прикладные инструменты для мобильных и десктопных сред.<br>• Веб-разработка и сайты — проектирование веб-пространств, цифровых платформ и интерактивных систем.<br>• Скрипты и автоматизация — автономные программные модули и инструменты оптимизации рабочих процессов.<br>• Искусственный интеллект — работа с генеративными моделями и алгоритмами машинного интеллекта.<br>• Криптовалюты и Web3 — демистификация децентрализованных технологий: проектирование прикладной инфраструктуры, интегрирующей протоколы Web3 в повседневную цифровую среду.",
-        btn_projects: "К проектам →",
-        btn_donate: "Поддержать криптой",
-        btn_contact: "Контакты",
-        compass_hint: "Наведите на карточку, нажмите на компас или поверните курс — координаты пересчитываются автоматически.",
-        status_open: "available for work and for talk :)",
-        sec_projects: "Проекты",
-        prj_1: "Скоро будет",
-        prj_2: "Скоро будет",
-        prj_3: "Скоро будет",
-        prj_soon_desc: "Раздел готовится к публикации, детали появятся позже.",
-        prj_soon_badge: "SOON",
-        sec_stack: "ИНСТРУМЕНТЫ И СТЕК",
-        stack_lbl_focus: "ФОКУС",
-        stack_lbl_tools: "ИНСТРУМЕНТЫ И ИНФРАСТРУКТУРА",
-        stack_lbl_fw: "ФРЕЙМВОРКИ И ПЛАТФОРМЫ",
-        stack_lbl_lang: "ЯЗЫКИ",
-        stack_lang: "Python, Kotlin, C#, TypeScript, SQL, Bash",
-        stack_fw: "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
-        stack_tools: "Git, Docker, Linux, CI/CD, RPC / REST API, локальные LLM- и Web3-узлы",
-        stack_focus: "Детерминированный код, кроссплатформенные утилиты, прикладной AI, децентрализованные протоколы",
-        sec_contact: "CONTACTS",
-        contact_note: "Замените ссылки и контакты на свои актуальные данные.",
-        donate_title: "ПОЖЕРТВОВАНИЯ НА РАЗВИТИЕ (CRYPTO)",
-        donate_hint: "Замените адреса кошельков на свои перед публикацией",
-        donate_desc: "Поддержка развития проектов, инструментов и открытых утилит (в сети TRON поддерживаются TRX и USDT TRC20). Выберите сеть и скопируйте адрес.",
-        btn_copy: "Копировать адрес",
-        btn_copied: "Скопировано ✓"
+        const RU_SOURCE = {
+      "nav_projects": "Проекты",
+      "nav_stack": "Стек",
+      "nav_contact": "Связь",
+      "nav_donate": "Донат",
+      "hero_role": "независимый разработчик программных систем, утилит и других чудес цифровых миров.",
+      "hero_desc": "Kaiser Azimuth — независимый разработчик программных систем, утилит и других чудес цифровых миров. Работаю ради чистоты архитектуры, поиска нестандартных решений и самого процесса созидания.<br><br>Верю в программы, которые уважают ресурсы устройства и время человека: минимум визуального шума, максимум пользы, предсказуемость в работе и внимание к деталям. Пока делаю всё это больше для себя, для души — ну а дальше всё может быть...<br><br><strong>Направления работы:</strong><br>• Android &amp; Windows — нативные программные решения и прикладные инструменты для мобильных и десктопных сред.<br>• Веб-разработка и сайты — проектирование веб-пространств, цифровых платформ и интерактивных систем.<br>• Скрипты и автоматизация — автономные программные модули и инструменты оптимизации рабочих процессов.<br>• Искусственный интеллект — работа с генеративными моделями и алгоритмами машинного интеллекта.<br>• Криптовалюты и Web3 — демистификация децентрализованных технологий: проектирование прикладной инфраструктуры, интегрирующей протоколы Web3 в повседневную цифровую среду.",
+      "btn_projects": "К проектам →",
+      "btn_donate": "Поддержать криптой",
+      "btn_contact": "Контакты",
+      "compass_hint": "Наведите на карточку, нажмите на компас или поверните курс — координаты пересчитываются автоматически.",
+      "status_open": "available for work and for talk :)",
+      "sec_projects": "Проекты",
+      "prj_1": "Скоро будет",
+      "prj_2": "Скоро будет",
+      "prj_3": "Скоро будет",
+      "prj_soon_desc": "Раздел готовится к публикации, детали появятся позже.",
+      "prj_soon_badge": "SOON",
+      "sec_stack": "ИНСТРУМЕНТЫ И СТЕК",
+      "stack_lbl_focus": "ФОКУС",
+      "stack_lbl_tools": "ИНСТРУМЕНТЫ И ИНФРАСТРУКТУРА",
+      "stack_lbl_fw": "ФРЕЙМВОРКИ И ПЛАТФОРМЫ",
+      "stack_lbl_lang": "ЯЗЫКИ",
+      "stack_lang": "Python, Kotlin, C#, TypeScript, SQL, Bash",
+      "stack_fw": "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
+      "stack_tools": "Git, Docker, Linux, CI/CD, RPC / REST API, локальные LLM- и Web3-узлы",
+      "stack_focus": "Детерминированный код, кроссплатформенные утилиты, прикладной AI, децентрализованные протоколы",
+      "sec_contact": "КОНТАКТЫ",
+      "contact_note": "Прямая связь для сотрудничества, идей и обсуждения проектов.",
+      "donate_title": "ПОЖЕРТВОВАНИЯ · КРИПТОВАЛЮТА",
+      "donate_hint": "Актуальные адреса кошельков",
+      "donate_desc": "Прямая поддержка проектов без посредников. Выберите сеть — отправляйте монеты или токены строго в указанной сети.",
+      "btn_copy": "Копировать адрес",
+      "btn_copied": "Скопировано ✓"
+};
+
+    const TRANSLATIONS_FROM_RU = {
+      "en": {
+            "nav_projects": "Projects",
+            "nav_stack": "Stack",
+            "nav_contact": "Contact",
+            "nav_donate": "Donate",
+            "hero_role": "independent developer of software systems, utilities, and other wonders of digital worlds.",
+            "hero_desc": "Kaiser Azimuth — independent developer of software systems, utilities, and other wonders of digital worlds. I build for architectural clarity, unconventional solutions, and the joy of creation itself.<br><br>I believe in software that respects device resources and human time: minimal visual noise, maximum utility, predictable behavior, and attention to detail. For now I do this mostly for myself and for the soul — and we'll see what comes next...<br><br><strong>Focus areas:</strong><br>• Android &amp; Windows — native software solutions and practical tools for mobile and desktop environments.<br>• Web development &amp; websites — designing web spaces, digital platforms, and interactive systems.<br>• Scripts &amp; automation — autonomous software modules and workflow optimization tools.<br>• Artificial intelligence — working with generative models and machine intelligence algorithms.<br>• Cryptocurrencies &amp; Web3 — demystifying decentralized technologies: designing applied infrastructure that integrates Web3 protocols into everyday digital environments.",
+            "btn_projects": "To projects →",
+            "btn_donate": "Support with crypto",
+            "btn_contact": "Contacts",
+            "compass_hint": "Hover a card, click the compass, or rotate the bearing — coordinates recalculate automatically.",
+            "status_open": "available for work and for talk :)",
+            "sec_projects": "Projects",
+            "prj_1": "Coming soon",
+            "prj_2": "Coming soon",
+            "prj_3": "Coming soon",
+            "prj_soon_desc": "This section is being prepared for release; details will appear soon.",
+            "prj_soon_badge": "SOON",
+            "sec_stack": "TOOLS & STACK",
+            "stack_lbl_focus": "FOCUS",
+            "stack_lbl_tools": "TOOLS & INFRASTRUCTURE",
+            "stack_lbl_fw": "FRAMEWORKS & PLATFORMS",
+            "stack_lbl_lang": "LANGUAGES",
+            "stack_lang": "Python, Kotlin, C#, TypeScript, SQL, Bash",
+            "stack_fw": "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
+            "stack_tools": "Git, Docker, Linux, CI/CD, RPC / REST API, local LLM & Web3 nodes",
+            "stack_focus": "Deterministic code, cross-platform utilities, applied AI, decentralized protocols",
+            "sec_contact": "CONTACTS",
+            "contact_note": "Direct contact for collaboration, ideas, and project discussions.",
+            "donate_title": "DONATIONS · CRYPTOCURRENCY",
+            "donate_hint": "Active wallet addresses",
+            "donate_desc": "Direct support for projects with no middlemen. Choose a network — send coins or tokens strictly on the specified network.",
+            "btn_copy": "Copy address",
+            "btn_copied": "Copied ✓"
       },
-      en: {
-        nav_projects: "Projects",
-        nav_stack: "Stack",
-        nav_contact: "Contact",
-        nav_donate: "Donate",
-        hero_role: "software systems and tools developer.",
-        hero_desc: "Short summary of specialization, core engineering areas, and development workflow. Edit this text to fit your profile.",
-        btn_projects: "View projects →",
-        btn_donate: "Support with crypto",
-        btn_contact: "Contacts",
-        compass_hint: "Hover a card, click the compass, or step the bearing — coordinates recalculate dynamically.",
-        status_open: "available for work and for talk :)",
-        sec_projects: "Projects",
-        prj_1: "Coming soon",
-        prj_2: "Coming soon",
-        prj_3: "Coming soon",
-        prj_soon_desc: "Projects are being prepared and will be published soon.",
-        prj_soon_badge: "SOON",
-        sec_stack: "INSTRUMENTS & STACK",
-        stack_lbl_focus: "FOCUS",
-        stack_lbl_tools: "TOOLS & INFRA",
-        stack_lbl_fw: "FRAMEWORKS & PLATFORMS",
-        stack_lbl_lang: "LANGUAGES",
-        stack_lang: "Add your programming languages",
-        stack_fw: "Add frameworks & platforms",
-        stack_focus: "Add core focus areas",
-        sec_contact: "CONTACTS",
-        contact_note: "Replace links and contact details with your own.",
-        donate_title: "DEVELOPMENT DONATIONS (CRYPTO)",
-        donate_hint: "Replace wallet addresses with yours before publishing",
-        donate_desc: "Support ongoing development of projects, tools, and open utilities (TRX and USDT TRC20 on TRON). Pick a network and copy the address.",
-        btn_copy: "Copy address",
-        btn_copied: "Copied ✓"
+      "de": {
+            "nav_projects": "Projekte",
+            "nav_stack": "Stack",
+            "nav_contact": "Kontakt",
+            "nav_donate": "Spenden",
+            "hero_role": "unabhängiger Entwickler von Softwaresystemen, Dienstprogrammen und anderen Wundern digitaler Welten.",
+            "hero_desc": "Kaiser Azimuth — unabhängiger Entwickler von Softwaresystemen, Dienstprogrammen und anderen Wundern digitaler Welten. Ich arbeite für architektonische Klarheit, unkonventionelle Lösungen und die Freude am Erschaffen selbst.<br><br>Ich glaube an Programme, die Geräteressourcen und menschliche Zeit respektieren: minimaler visueller Lärm, maximaler Nutzen, vorhersehbares Verhalten und Liebe zum Detail. Vorerst mache ich das vor allem für mich selbst und aus Leidenschaft — mal sehen, was kommt...<br><br><strong>Arbeitsbereiche:</strong><br>• Android &amp; Windows — native Softwarelösungen und praktische Werkzeuge für Mobil- und Desktop-Umgebungen.<br>• Webentwicklung &amp; Websites — Gestaltung von Webräumen, digitalen Plattformen und interaktiven Systemen.<br>• Skripte &amp; Automatisierung — autonome Softwaremodule und Werkzeuge zur Arbeitsablaufoptimierung.<br>• Künstliche Intelligenz — Arbeit mit generativen Modellen und Algorithmen maschineller Intelligenz.<br>• Kryptowährungen &amp; Web3 — Entmystifizierung dezentraler Technologien: Entwicklung angewandter Infrastruktur, die Web3-Protokolle in den digitalen Alltag integriert.",
+            "btn_projects": "Zu den Projekten →",
+            "btn_donate": "Mit Krypto unterstützen",
+            "btn_contact": "Kontakte",
+            "compass_hint": "Karte berühren, Kompass klicken oder Kurs drehen – Koordinaten werden automatisch neu berechnet.",
+            "status_open": "available for work and for talk :)",
+            "sec_projects": "Projekte",
+            "prj_1": "Demnächst",
+            "prj_2": "Demnächst",
+            "prj_3": "Demnächst",
+            "prj_soon_desc": "Dieser Bereich wird für die Veröffentlichung vorbereitet, Details folgen in Kürze.",
+            "prj_soon_badge": "SOON",
+            "sec_stack": "WERKZEUGE & STACK",
+            "stack_lbl_focus": "FOKUS",
+            "stack_lbl_tools": "WERKZEUGE & INFRASTRUKTUR",
+            "stack_lbl_fw": "FRAMEWORKS & PLATTFORMEN",
+            "stack_lbl_lang": "SPRACHEN",
+            "stack_lang": "Python, Kotlin, C#, TypeScript, SQL, Bash",
+            "stack_fw": "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
+            "stack_tools": "Git, Docker, Linux, CI/CD, RPC / REST API, lokale LLM- und Web3-Nodes",
+            "stack_focus": "Deterministischer Code, plattformübergreifende Tools, angewandte KI, dezentrale Protokolle",
+            "sec_contact": "KONTAKTE",
+            "contact_note": "Direkter Kontakt für Zusammenarbeit, Ideen und Projektdiskussionen.",
+            "donate_title": "SPENDEN · KRYPTOWÄHRUNG",
+            "donate_hint": "Aktuelle Wallet-Adressen",
+            "donate_desc": "Direkte Unterstützung für Projekte ohne Zwischenhändler. Netzwerk wählen und Coins oder Token strikt im angegebenen Netzwerk senden.",
+            "btn_copy": "Adresse kopieren",
+            "btn_copied": "Kopiert ✓"
       },
-      de: {
-        nav_projects: "Projekte",
-        nav_stack: "Stack",
-        nav_contact: "Kontakt",
-        nav_donate: "Spenden",
-        hero_role: "Entwickler für Softwaresysteme und Werkzeuge.",
-        hero_desc: "Kurze Beschreibung Ihrer Schwerpunkte, Technologien und Arbeitsweise. Passen Sie diesen Text individuell an.",
-        btn_projects: "Zu den Projekten →",
-        btn_donate: "Mit Krypto unterstützen",
-        btn_contact: "Kontakte",
-        compass_hint: "Karte berühren, Kompass klicken oder Kurs drehen – Koordinaten werden dynamisch aktualisiert.",
-        status_open: "available for work and for talk :)",
-        sec_projects: "Projekte",
-        prj_1: "Demnächst",
-        prj_2: "Demnächst",
-        prj_3: "Demnächst",
-        prj_soon_desc: "Die Projekte werden vorbereitet und folgen in Kürze.",
-        prj_soon_badge: "SOON",
-        sec_stack: "WERKZEUGE & STACK",
-        stack_lbl_focus: "SCHWERPUNKT",
-        stack_lbl_tools: "TOOLS & INFRASTRUKTUR",
-        stack_lbl_fw: "FRAMEWORKS & PLATTFORMEN",
-        stack_lbl_lang: "SPRACHEN",
-        stack_lang: "Programmiersprachen eintragen",
-        stack_fw: "Frameworks & Plattformen eintragen",
-        stack_focus: "Schwerpunkte eintragen",
-        sec_contact: "CONTACTS",
-        contact_note: "Ersetzen Sie Links und Kontaktdaten durch eigene Angaben.",
-        donate_title: "SPENDEN FÜR DIE ENTWICKLUNG (CRYPTO)",
-        donate_hint: "Wallet-Adressen vor der Veröffentlichung anpassen",
-        donate_desc: "Unterstützung für die Weiterentwicklung von Projekten und Tools. Netzwerk wählen und Adresse kopieren.",
-        btn_copy: "Adresse kopieren",
-        btn_copied: "Kopiert ✓"
+      "zh": {
+            "nav_projects": "项目",
+            "nav_stack": "技术栈",
+            "nav_contact": "联系",
+            "nav_donate": "赞赏",
+            "hero_role": "独立软件系统、实用工具与数字世界奇妙造物的开发者。",
+            "hero_desc": "Kaiser Azimuth —— 独立软件系统、实用工具与数字世界奇妙造物的开发者。我追求清晰的架构、非常规的解决方案，以及创造过程本身带来的纯粹乐趣。<br><br>我相信真正优秀的程序应当尊重设备资源与人的时间：减少视觉噪音、最大化实用价值、保持运行的可预测性并注重细节。目前这一切更多是为了自己与热爱而做 —— 至于未来，一切皆有可能……<br><br><strong>工作方向：</strong><br>• Android 与 Windows —— 面向移动端与桌面环境的原生软件方案及实用工具。<br>• Web 开发与网站 —— 构建网络空间、数字平台与交互系统。<br>• 脚本与自动化 —— 自主运行的软件模块与工作流优化工具。<br>• 人工智能 —— 探索生成式模型与机器智能算法。<br>• 加密货币与 Web3 —— 祛魅去中心化技术：打造将 Web3 协议融入日常数字环境的应用基础设施。",
+            "btn_projects": "前往项目 →",
+            "btn_donate": "加密货币支持",
+            "btn_contact": "联系方式",
+            "compass_hint": "悬停卡片、点击罗盘或调整方位角 —— 坐标将自动重新计算。",
+            "status_open": "available for work and for talk :)",
+            "sec_projects": "项目",
+            "prj_1": "即将上线",
+            "prj_2": "即将上线",
+            "prj_3": "即将上线",
+            "prj_soon_desc": "该板块正在准备发布，详细信息将在稍后呈现。",
+            "prj_soon_badge": "SOON",
+            "sec_stack": "工具与技术栈",
+            "stack_lbl_focus": "核心方向",
+            "stack_lbl_tools": "工具与基础设施",
+            "stack_lbl_fw": "框架与平台",
+            "stack_lbl_lang": "编程语言",
+            "stack_lang": "Python, Kotlin, C#, TypeScript, SQL, Bash",
+            "stack_fw": "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
+            "stack_tools": "Git, Docker, Linux, CI/CD, RPC / REST API, 本地 LLM 与 Web3 节点",
+            "stack_focus": "确定性代码、跨平台工具、应用 AI、去中心化协议",
+            "sec_contact": "联系方式",
+            "contact_note": "欢迎就合作、创意与项目交流直接联系。",
+            "donate_title": "捐赠 · 加密货币",
+            "donate_hint": "当前钱包地址",
+            "donate_desc": "无中间商直接支持项目开发。请选择对应网络，并严格在指定网络中发送币种或代币。",
+            "btn_copy": "复制地址",
+            "btn_copied": "已复制 ✓"
       },
-      zh: {
-        nav_projects: "项目",
-        nav_stack: "技术栈",
-        nav_contact: "联系",
-        nav_donate: "赞赏",
-        hero_role: "软件系统与工具开发者。",
-        hero_desc: "填写您的技术方向、核心领域与开发理念。发布前可随时编辑此段简介。",
-        btn_projects: "查看项目 →",
-        btn_donate: "加密货币支持",
-        btn_contact: "联系方式",
-        compass_hint: "悬停卡片、点击罗盘或调整方位角，坐标与参数将实时联动更新。",
-        status_open: "available for work and for talk :)",
-        sec_projects: "项目",
-        prj_1: "即将上线",
-        prj_2: "即将上线",
-        prj_3: "即将上线",
-        prj_soon_desc: "项目内容正在整理中，敬请期待。",
-        prj_soon_badge: "SOON",
-        sec_stack: "工具与技术栈",
-        stack_lbl_focus: "核心方向",
-        stack_lbl_tools: "工具与基础设施",
-        stack_lbl_fw: "框架与平台",
-        stack_lbl_lang: "编程语言",
-        stack_lang: "填写编程语言",
-        stack_fw: "填写框架与平台",
-        stack_focus: "填写核心方向",
-        sec_contact: "CONTACTS",
-        contact_note: "请将链接与联系方式替换为您的真实信息。",
-        donate_title: "开发支持与赞赏 (CRYPTO)",
-        donate_hint: "发布前请替换为您的实际钱包地址",
-        donate_desc: "支持开源工具与项目的持续开发。选择对应网络并复制钱包地址。",
-        btn_copy: "复制地址",
-        btn_copied: "已复制 ✓"
-      },
-      fr: {
-        nav_projects: "Projets",
-        nav_stack: "Stack",
-        nav_contact: "Contact",
-        nav_donate: "Don",
-        hero_role: "développeur de systèmes logiciels et d'outils.",
-        hero_desc: "Brève présentation de votre spécialisation, de vos axes techniques et de votre méthode. Modifiez ce texte librement.",
-        btn_projects: "Voir les projets →",
-        btn_donate: "Soutenir en crypto",
-        btn_contact: "Contacts",
-        compass_hint: "Survolez une carte, cliquez sur la boussole ou ajustez le cap — les coordonnées se mettent à jour.",
-        status_open: "available for work and for talk :)",
-        sec_projects: "Projets",
-        prj_1: "Bientôt disponible",
-        prj_2: "Bientôt disponible",
-        prj_3: "Bientôt disponible",
-        prj_soon_desc: "Les projets sont en préparation et seront publiés prochainement.",
-        prj_soon_badge: "SOON",
-        sec_stack: "OUTILS & STACK",
-        stack_lbl_focus: "ORIENTATION",
-        stack_lbl_tools: "OUTILS & INFRASTRUCTURE",
-        stack_lbl_fw: "FRAMEWORKS & PLATEFORMES",
-        stack_lbl_lang: "LANGAGES",
-        stack_lang: "Ajoutez vos langages de programmation",
-        stack_fw: "Ajoutez vos frameworks et plateformes",
-        stack_focus: "Ajoutez vos domaines clés",
-        sec_contact: "CONTACTS",
-        contact_note: "Remplacez les liens et coordonnées par vos informations.",
-        donate_title: "DONS POUR LE DÉVELOPPEMENT (CRYPTO)",
-        donate_hint: "Remplacez les adresses de portefeuille avant publication",
-        donate_desc: "Soutenez le développement des projets et outils. Choisissez un réseau et copiez l'adresse.",
-        btn_copy: "Copier l'adresse",
-        btn_copied: "Copié ✓"
+      "fr": {
+            "nav_projects": "Projets",
+            "nav_stack": "Stack",
+            "nav_contact": "Contact",
+            "nav_donate": "Don",
+            "hero_role": "développeur indépendant de systèmes logiciels, d'utilitaires et d'autres merveilles des mondes numériques.",
+            "hero_desc": "Kaiser Azimuth — développeur indépendant de systèmes logiciels, d'utilitaires et d'autres merveilles des mondes numériques. Je travaille pour la clarté de l'architecture, la recherche de solutions non conventionnelles et le plaisir même de créer.<br><br>Je crois aux programmes qui respectent les ressources de l'appareil et le temps humain : un minimum de bruit visuel, un maximum d'utilité, une grande prévisibilité et une attention portée aux détails. Pour l'instant, je fais tout cela surtout pour moi et par passion — et la suite reste ouverte...<br><br><strong>Domaines d'activité :</strong><br>• Android &amp; Windows — solutions logicielles natives et outils pratiques pour environnements mobiles et bureau.<br>• Développement web &amp; sites — conception d'espaces web, de plateformes numériques et de systèmes interactifs.<br>• Scripts &amp; automatisation — modules logiciels autonomes et outils d'optimisation des flux de travail.<br>• Intelligence artificielle — travail avec les modèles génératifs et les algorithmes d'intelligence machine.<br>• Cryptomonnaies &amp; Web3 — démystification des technologies décentralisées : conception d'infrastructures appliquées intégrant les protocoles Web3 dans l'environnement numérique quotidien.",
+            "btn_projects": "Vers les projets →",
+            "btn_donate": "Soutenir en crypto",
+            "btn_contact": "Contacts",
+            "compass_hint": "Survolez une carte, cliquez sur la boussole ou tournez le cap — les coordonnées se recalculent automatiquement.",
+            "status_open": "available for work and for talk :)",
+            "sec_projects": "Projets",
+            "prj_1": "Bientôt disponible",
+            "prj_2": "Bientôt disponible",
+            "prj_3": "Bientôt disponible",
+            "prj_soon_desc": "Cette section est en préparation pour publication ; les détails arriveront bientôt.",
+            "prj_soon_badge": "SOON",
+            "sec_stack": "OUTILS & STACK",
+            "stack_lbl_focus": "ORIENTATION",
+            "stack_lbl_tools": "OUTILS & INFRASTRUCTURE",
+            "stack_lbl_fw": "FRAMEWORKS & PLATEFORMES",
+            "stack_lbl_lang": "LANGAGES",
+            "stack_lang": "Python, Kotlin, C#, TypeScript, SQL, Bash",
+            "stack_fw": "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
+            "stack_tools": "Git, Docker, Linux, CI/CD, RPC / REST API, nœuds LLM et Web3 locaux",
+            "stack_focus": "Code déterministe, utilitaires multiplateformes, IA appliquée, protocoles décentralisés",
+            "sec_contact": "CONTACTS",
+            "contact_note": "Contact direct pour collaborations, idées et échanges autour des projets.",
+            "donate_title": "DONS · CRYPTOMONNAIE",
+            "donate_hint": "Adresses de portefeuille actives",
+            "donate_desc": "Soutien direct aux projets sans intermédiaire. Choisissez un réseau et envoyez vos pièces ou jetons uniquement sur le réseau indiqué.",
+            "btn_copy": "Copier l'adresse",
+            "btn_copied": "Copié ✓"
       }
+};
+
+    function buildDictionaryFromRussian(lang) {
+      if (lang === 'ru') {
+        return { ...RU_SOURCE };
+      }
+      const targetMap = TRANSLATIONS_FROM_RU[lang] || TRANSLATIONS_FROM_RU.en;
+      const result = {};
+      Object.keys(RU_SOURCE).forEach((key) => {
+        const ruText = RU_SOURCE[key];
+        result[key] = Object.prototype.hasOwnProperty.call(targetMap, key)
+          ? targetMap[key]
+          : ruText;
+        void ruText;
+      });
+      return result;
+    }
+
+    const I18N = {
+      ru: buildDictionaryFromRussian('ru'),
+      en: buildDictionaryFromRussian('en'),
+      de: buildDictionaryFromRussian('de'),
+      zh: buildDictionaryFromRussian('zh'),
+      fr: buildDictionaryFromRussian('fr')
     };
 
     const langSelect = document.getElementById('lang-select');
 
     function applyLanguage(lang, isAuto = false) {
-      const dict = I18N[lang] || I18N.en;
-      document.documentElement.lang = lang;
-      langSelect.value = lang;
+      const activeLang = I18N[lang] ? lang : 'ru';
+      const dict = buildDictionaryFromRussian(activeLang);
+      document.documentElement.lang = activeLang;
+      langSelect.value = activeLang;
 
-      document.querySelectorAll('[data-i18n]').forEach(el => {
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
-        if (dict[key]) {
-          if (/<[a-z][\s\S]*>/i.test(dict[key])) { el.innerHTML = dict[key]; } else { el.textContent = dict[key]; }
+        if (Object.prototype.hasOwnProperty.call(dict, key)) {
+          const val = dict[key];
+          if (/<[a-z][\s\S]*>/i.test(val)) {
+            el.innerHTML = val;
+          } else {
+            el.textContent = val;
+          }
         }
       });
     }
 
     function detectBrowserLanguage() {
-      const candidates = navigator.languages && navigator.languages.length
+      const candidates = Array.isArray(navigator.languages) && navigator.languages.length
         ? navigator.languages
-        : [navigator.language || 'en'];
+        : [navigator.language || 'ru'];
       for (const item of candidates) {
-        const code = item.toLowerCase().slice(0, 2);
-        if (I18N[code]) return code;
+        if (!item) continue;
+        const normalized = String(item).toLowerCase();
+        const baseCode = normalized.split('-')[0].slice(0, 2);
+        if (baseCode === 'zh') return 'zh';
+        if (I18N[baseCode]) return baseCode;
       }
-      return 'en';
+      return 'ru';
     }
 
     const savedLang = localStorage.getItem('ka_lang');
@@ -1735,11 +1773,15 @@
       applyLanguage(detectBrowserLanguage(), true);
     }
 
-    langSelect.addEventListener('change', () => {
-      const chosen = langSelect.value;
-      localStorage.setItem('ka_lang', chosen);
-      applyLanguage(chosen, false);
-    });
+    if (langSelect) {
+      const handleLangChange = () => {
+        const chosen = langSelect.value;
+        localStorage.setItem('ka_lang', chosen);
+        applyLanguage(chosen, false);
+      };
+      langSelect.addEventListener('change', handleLangChange);
+      langSelect.addEventListener('input', handleLangChange);
+    }
 
     const needleGroup = document.getElementById('compass-needle-group');
     const miniNeedle = document.getElementById('mini-instrument-needle');
