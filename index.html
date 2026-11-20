@@ -4,24 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kaiser_Azimuth — Software Engineer</title>
-  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+  <link rel="icon" type="image/jpeg" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0c10;
       --surface: #11151c;
-      --surface-hover: #161b24;
+      --surface-elevated: #151b26;
       --border: #1f2633;
-      --border-accent: rgba(212, 175, 55, 0.45);
-      --text: #e6edf3;
-      --muted: #8b949e;
+      --border-accent: rgba(212, 175, 55, 0.55);
+      --text: #f3f6fa;
+      --muted: #c2ccd9;
       --gold: #d4af37;
-      --gold-dim: rgba(212, 175, 55, 0.12);
+      --gold-bright: #f5d87d;
+      --gold-dim: rgba(212, 175, 55, 0.16);
       --green: #3fb950;
       --mono: 'JetBrains Mono', monospace;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --gothic-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+      --gothic-desc: 'Cormorant Garamond', 'Inter', 'Noto Sans SC', Georgia, serif;
+      --sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     * {
@@ -37,88 +40,392 @@
     body {
       background-color: var(--bg);
       background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(212, 175, 55, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(212, 175, 55, 0.025) 1px, transparent 1px);
       background-size: 48px 48px;
       color: var(--text);
       font-family: var(--sans);
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.68;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* Красивый читаемый курсив для описаний */
+    .gothic-desc {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.62;
+      letter-spacing: 0.01em;
+      font-weight: 500;
     }
 
-    /* Навигационная панель / Телеметрия */
+    .gothic-title {
+      font-family: var(--gothic-display);
+      letter-spacing: 0.02em;
+      font-weight: 400;
+    }
+
+    @keyframes pulseGold {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.25);
+      }
+      50% {
+        box-shadow: 0 0 22px 2px rgba(212, 175, 55, 0.18);
+      }
+    }
+
+                @keyframes emblemMotion {
+      0%, 100% {
+        transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+      }
+      20% {
+        transform: translate3d(2px, -4px, 0) rotate(-2.4deg) scale(1.03);
+      }
+      50% {
+        transform: translate3d(-1px, -1px, 0) rotate(1.8deg) scale(1.045);
+      }
+      80% {
+        transform: translate3d(-2px, -4px, 0) rotate(-1.4deg) scale(1.025);
+      }
+    }
+
+    @keyframes emblemSweep {
+      0% {
+        transform: translateX(-150%) skewX(-24deg);
+        opacity: 0;
+      }
+      25% {
+        opacity: 0.42;
+      }
+      60% {
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(240%) skewX(-24deg);
+        opacity: 0;
+      }
+    }
+
+        .brand {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      margin-top: 38px;
+      margin-left: 38px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+        .brand-logo-wrap {
+      position: relative;
+      order: -1;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      animation: emblemMotion 5.5s ease-in-out infinite;
+      transition: transform 0.28s cubic-bezier(0.22, 1.35, 0.36, 1), box-shadow 0.28s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.35);
+    }
+
+    .brand-logo-wrap::after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: -65%;
+      width: 50%;
+      height: 140%;
+      background: linear-gradient(90deg, transparent, rgba(255, 246, 204, 0.35), transparent);
+      pointer-events: none;
+      animation: emblemSweep 6.2s ease-in-out infinite;
+    }
+
+        .brand-logo-full {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .brand:hover .brand-logo-wrap {
+      transform: translateY(-4px) scale(1.09) rotate(2deg);
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.68)) drop-shadow(0 0 12px rgba(212, 175, 55, 0.32));
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.72), 0 0 0 1.5px rgba(242, 211, 116, 0.62);
+    }
+
+    .brand:active .brand-logo-wrap {
+      transform: translateY(0px) scale(0.96);
+      transition-duration: 0.12s;
+    }
+
+    /* Эффект Liquid Glass для сайта */
+    @keyframes liquidOrbDriftA {
+      0%, 100% {
+        transform: translate3d(0px, 0px, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(42px, -28px, 0) scale(1.12);
+      }
+    }
+
+    @keyframes liquidOrbDriftB {
+      0%, 100% {
+        transform: translate3d(0px, 0px, 0) scale(1.05);
+      }
+      50% {
+        transform: translate3d(-48px, 32px, 0) scale(0.94);
+      }
+    }
+
+    
+
+    
+
+    
+
     header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 12, 16, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(22, 27, 38, 0.82), rgba(10, 12, 16, 0.74)) !important;
+      backdrop-filter: blur(22px) saturate(165%) contrast(106%) !important;
+      -webkit-backdrop-filter: blur(22px) saturate(165%) contrast(106%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      padding-bottom: 14px;
     }
 
     .nav-bar {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      height: 68px;
-      font-family: var(--mono);
-      font-size: 13px;
+      gap: 16px;
+      flex-wrap: wrap;
+      min-height: 80px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text);
-      text-decoration: none;
+    .nav-bar .telemetry,
+    .nav-bar .nav-right {
+      margin-top: 38px;
+    }
+
+    .card,
+    .section-header {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.065) 0%, rgba(17, 21, 28, 0.56) 45%, rgba(10, 13, 19, 0.68) 100%) !important;
+      backdrop-filter: blur(18px) saturate(155%) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(155%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.11) !important;
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.36),
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+        inset 0 -1px 1px rgba(212, 175, 55, 0.08);
+      overflow: hidden;
+    }
+
+    .card::before,
+    .section-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--lg-x, 50%) var(--lg-y, 0%), rgba(255, 250, 224, 0.11), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::before,
+    .section-header:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover,
+    .section-header:hover {
+      background: linear-gradient(145deg, rgba(255, 248, 215, 0.11) 0%, rgba(22, 28, 39, 0.66) 50%, rgba(12, 16, 24, 0.76) 100%) !important;
+      border-color: rgba(242, 211, 116, 0.45) !important;
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.48),
+        0 0 24px rgba(212, 175, 55, 0.14),
+        inset 0 1px 1px rgba(255, 255, 255, 0.28),
+        inset 0 -1px 2px rgba(242, 211, 116, 0.16);
+    }
+
+    .wallet-box,
+    .dynamic-coords-box,
+    .contact-item,
+    .lang-box {
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.05), rgba(10, 12, 16, 0.58)) !important;
+      backdrop-filter: blur(14px) saturate(145%);
+      -webkit-backdrop-filter: blur(14px) saturate(145%);
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .wallet-box:hover,
+    .contact-item:hover {
+      border-color: rgba(242, 211, 116, 0.45) !important;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    }
+
+    footer {
+      background: rgba(12, 15, 22, 0.65);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .brand-title {
+      order: 0;
+      font-family: var(--gothic-display);
+      font-size: 21px;
       font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 1px solid var(--border-accent);
+      color: var(--gold-bright);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
     .telemetry {
       color: var(--muted);
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .mini-antique-instrument {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(245, 216, 125, 0.22), rgba(20, 24, 34, 0.92));
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.16), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.22, 1.35, 0.36, 1), box-shadow 0.3s ease;
+    }
+
+    .mini-antique-instrument:hover {
+      transform: scale(1.12) rotate(12deg);
+      box-shadow: 0 0 14px rgba(242, 211, 116, 0.32), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    }
+
+    .mini-antique-svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    #mini-instrument-needle {
+      transform-origin: 24px 24px;
+      transform: rotate(35deg);
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .telemetry span strong {
       color: var(--gold);
-      font-weight: 500;
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: var(--muted);
+      position: relative;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.015em;
       text-decoration: none;
-      transition: color 0.2s;
+      padding: 8px 13px;
+      border-radius: 8px;
+      transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 2px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .nav-links a:hover {
-      color: var(--gold);
+      color: var(--gold-bright);
+      background-color: var(--gold-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.14);
     }
 
-    /* Bento Grid Layout */
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .lang-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      padding: 4px 8px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .lang-box:hover {
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.16);
+    }
+
+    .lang-box select,
+    .lang-box button {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 4px 6px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-box select option {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .auto-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--gold-dim);
+      color: var(--gold);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    /* Сетка Bento */
     main {
-      padding: 40px 0 80px;
+      padding: 36px 0 84px;
     }
 
     .bento-grid {
@@ -127,36 +434,61 @@
       gap: 18px;
     }
 
-    .card {
+    .card,
+    .section-header {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 26px;
       position: relative;
-      transition: border-color 0.25s, transform 0.25s;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.32s ease, background-color 0.28s ease;
+    }
+
+    .card {
+      padding: 24px;
     }
 
     .card:hover {
+      transform: translateY(-4px);
+      background-color: var(--surface-elevated);
       border-color: var(--border-accent);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(212, 175, 55, 0.12), inset 0 1px 0 rgba(242, 211, 116, 0.14);
+    }
+
+    .section-header {
+      grid-column: span 12;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 22px;
+      padding: 14px 20px;
+      background: rgba(17, 21, 28, 0.72);
+    }
+
+    .section-header:hover {
+      transform: translateY(-2px);
+      background: var(--surface-elevated);
+      border-color: var(--border-accent);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 18px rgba(212, 175, 55, 0.08);
     }
 
     .card-label {
       font-family: var(--mono);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.3px;
       color: var(--gold);
       margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    /* Карточка фото разработчика (слева, на два ряда) */
+    /* Фото разработчика — без пустых углов, правый блок расширен */
     .avatar-card {
-      grid-column: span 5;
-      grid-row: span 2;
-      padding: 18px;
+      grid-column: span 4;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -164,8 +496,8 @@
 
     .avatar-frame {
       width: 100%;
-      height: 100%;
-      min-height: 440px;
+      flex: 1 1 auto;
+      min-height: 280px;
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border-accent);
@@ -176,7 +508,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .avatar-card:hover .avatar-frame img {
+      transform: scale(1.035);
     }
 
     .avatar-caption {
@@ -189,30 +527,39 @@
       align-items: center;
     }
 
-    /* Главная карточка Hero (справа сверху) */
+    /* Hero — расширен на освободившееся место справа */
     .hero-card {
-      grid-column: span 7;
+      grid-column: span 8;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .hero-title {
-      font-size: clamp(26px, 3.5vw, 38px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
+      font-size: clamp(26px, 3.4vw, 38px);
+      line-height: 1.22;
       margin-bottom: 14px;
     }
 
-    .hero-title span {
-      color: var(--gold);
+    .hero-title .gothic-brand {
+      font-family: var(--gothic-display);
+      font-size: clamp(30px, 3.8vw, 44px);
+      color: var(--gold-bright);
+      font-weight: 400;
+    }
+
+    .hero-title #hero-role-text {
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(24px, 2.7vw, 32px);
+      line-height: 1.32;
+      color: var(--text);
     }
 
     .hero-desc {
       color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .hero-actions {
@@ -232,7 +579,7 @@
       text-decoration: none;
       cursor: pointer;
       border: 1px solid var(--border);
-      transition: all 0.2s;
+      transition: all 0.22s ease;
     }
 
     .btn-primary {
@@ -240,10 +587,12 @@
       color: #0a0c10;
       border-color: var(--gold);
       font-weight: 600;
+      animation: pulseGold 3.5s infinite;
     }
 
     .btn-primary:hover {
-      background: #e3be44;
+      background: var(--gold-bright);
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
@@ -254,50 +603,105 @@
     .btn-secondary:hover {
       border-color: var(--gold);
       color: var(--gold);
+      transform: translateY(-2px);
     }
 
-    /* Компас / Статус карточка (справа под Hero) */
+    /* Старинный компас и динамические координаты от поворота */
     .compass-card {
-      grid-column: span 7;
+      grid-column: span 12;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
+      background:
+        radial-gradient(circle at 82% 50%, rgba(212, 175, 55, 0.08), transparent 55%),
+        var(--surface);
+    }
+
+    .compass-card:hover {
+      background:
+        radial-gradient(circle at 82% 50%, rgba(212, 175, 55, 0.13), transparent 58%),
+        var(--surface-elevated);
     }
 
     .compass-info {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      flex: 1;
     }
 
-    .compass-dial {
-      width: 120px;
-      height: 120px;
+    .dynamic-coords-box {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(10, 12, 16, 0.75);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: grid;
+      gap: 4px;
+    }
+
+    .dynamic-coords-box span {
+      color: var(--muted);
+    }
+
+    .dynamic-coords-box strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .compass-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-accent);
+      background: var(--gold-dim);
+      color: var(--gold);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mini-btn:hover {
+      background: var(--gold);
+      color: #0a0c10;
+      transform: translateY(-1px);
+    }
+
+    .antique-compass-wrap {
+      width: 184px;
+      height: 184px;
       flex-shrink: 0;
-      border-radius: 50%;
-      border: 1px dashed var(--border-accent);
       display: grid;
       place-items: center;
-      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    .compass-dial::before {
-      content: "N";
-      position: absolute;
-      top: 6px;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--gold);
+    .antique-compass-wrap:hover {
+      transform: scale(1.04);
     }
 
-    .needle {
-      width: 2px;
-      height: 76px;
-      background: linear-gradient(to bottom, var(--gold) 50%, var(--border) 50%);
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    .antique-compass-svg {
+      width: 184px;
+      height: 184px;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
+    }
+
+    #compass-needle-group {
+      transform-origin: 100px 104px;
       transform: rotate(35deg);
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .status-pill {
@@ -321,20 +725,16 @@
       background: var(--green);
     }
 
-    /* Секция заголовков */
-    .section-header {
-      grid-column: span 12;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-top: 20px;
-      padding: 0 4px;
+    .section-header h2 {
+      font-family: var(--gothic-desc);
+      font-size: 24px;
+      font-weight: 700;
+      transition: color 0.25s ease, transform 0.25s ease;
     }
 
-    .section-header h2 {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+    .section-header:hover h2 {
+      color: var(--gold-bright);
+      transform: translateX(4px);
     }
 
     .section-header span {
@@ -343,57 +743,55 @@
       color: var(--muted);
     }
 
-    /* Карточки проектов */
+    /* Проекты (предварительные заглушки) */
     .project-card {
       grid-column: span 4;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 165px;
+    }
+
+    .project-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .project-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-accent);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .project-card:hover .project-icon-box {
+      transform: scale(1.08) rotate(3deg);
+      background: rgba(212, 175, 55, 0.22);
     }
 
     .project-card h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: var(--text);
+      font-family: var(--gothic-desc);
+      font-size: 24px;
+      font-weight: 700;
     }
 
-    .project-card p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 18px;
-    }
-
-    .tag {
+    .project-footer-note {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
       font-family: var(--mono);
       font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 5px;
-      background: var(--gold-dim);
-      color: var(--gold);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-    }
-
-    .project-links {
+      color: var(--muted);
       display: flex;
-      gap: 14px;
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-
-    .project-links a {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .project-links a:hover {
-      color: var(--gold);
+      justify-content: space-between;
     }
 
     /* Стек и контакты */
@@ -407,15 +805,34 @@
       gap: 16px;
     }
 
+    .stack-group {
+      padding: 8px;
+      border-radius: 8px;
+      transition: background-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .stack-group:hover {
+      background-color: rgba(212, 175, 55, 0.05);
+      transform: translateX(3px);
+    }
+
     .stack-group h4 {
       font-family: var(--mono);
       font-size: 12px;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+    }
+
+    .stack-group:hover h4 {
+      color: var(--gold);
     }
 
     .stack-list {
-      font-size: 14px;
+      font-family: var(--gothic-desc);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.58;
+      font-weight: 500;
       color: var(--text);
     }
 
@@ -445,12 +862,107 @@
       color: var(--text);
       font-family: var(--mono);
       font-size: 13px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.2s, background-color 0.2s;
     }
 
     .contact-item:hover {
       border-color: var(--gold);
       color: var(--gold);
+      background-color: var(--gold-dim);
+      transform: translateX(4px);
+    }
+
+    /* Раздел пожертвований в криптовалюте (BTC, ETH/EVM, SOL, TRX) */
+    .crypto-card {
+      grid-column: span 12;
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(17, 21, 28, 0.96) 55%),
+        var(--surface);
+    }
+
+    .crypto-card:hover {
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.11) 0%, rgba(21, 27, 38, 0.98) 60%),
+        var(--surface-elevated);
+    }
+
+    .crypto-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .wallet-box {
+      background: rgba(10, 12, 16, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: border-color 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .wallet-box:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .wallet-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      gap: 6px;
+    }
+
+    .wallet-coin {
+      color: var(--gold-bright);
+      font-weight: 600;
+    }
+
+    .wallet-net {
+      font-size: 11px;
+      color: var(--muted);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .wallet-addr {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 10px;
+      border-radius: 6px;
+      word-break: break-all;
+      border: 1px dashed rgba(212, 175, 55, 0.25);
+    }
+
+    .copy-btn {
+      align-self: flex-start;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 7px 12px;
+      border-radius: 7px;
+      border: 1px solid var(--border-accent);
+      background: var(--gold-dim);
+      color: var(--gold);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--gold);
+      color: #0a0c10;
+      font-weight: 600;
+      transform: translateY(-1px);
     }
 
     footer {
@@ -460,203 +972,549 @@
       font-size: 12px;
       color: var(--muted);
       text-align: center;
+      transition: color 0.25s ease, border-color 0.25s ease;
     }
 
-    @media (max-width: 860px) {
+    footer:hover {
+      color: var(--text);
+      border-top-color: var(--border-accent);
+    }
+
+    @media (max-width: 1120px) {
+      .crypto-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 960px) {
       .avatar-card, .hero-card, .compass-card, .project-card, .stack-card, .contact-card {
         grid-column: span 12;
+      }
+      .compass-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .antique-compass-wrap {
+        align-self: center;
       }
       .avatar-frame {
         min-height: 360px;
       }
-      .telemetry {
-        display: none;
+    }
+
+    @media (max-width: 600px) {
+      .crypto-grid {
+        grid-template-columns: 1fr;
       }
+    }
+      .donate-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      padding: 3px 9px;
+      border-radius: 999px;
+      text-transform: none;
+    }
+    .donate-sub {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .crypto-grid-pro {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .wallet-card-pro {
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.045), rgba(10, 12, 16, 0.72));
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .wallet-card-pro:hover {
+      transform: translateY(-3px);
+      border-color: rgba(242, 211, 116, 0.45);
+    }
+    .wallet-head-pro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .wallet-title-pro {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .wallet-sub-pro {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .net-badge-pro {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold-bright);
+      background: rgba(212, 175, 55, 0.14);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .wallet-addr-pro {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(8, 10, 14, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 11px;
+      word-break: break-all;
+      user-select: all;
+    }
+    .copy-btn-pro {
+      width: 100%;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(242, 211, 116, 0.38);
+      background: rgba(212, 175, 55, 0.14);
+      color: var(--gold-bright);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .copy-btn-pro:hover {
+      background: var(--gold);
+      color: #0a0c10;
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+    @media (max-width: 1024px) {
+      .crypto-grid-pro { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .crypto-grid-pro { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ШАПКА САЙТА (РЕДАКТИРУЕМАЯ) -->
   <header>
     <div class="container nav-bar">
       <a href="#" class="brand">
-        <img src="assets/logo.jpg" alt="Kaiser_Azimuth Logo" class="brand-logo" />
-        <span>KAISER_AZIMUTH</span>
+        <span class="brand-logo-wrap"><img src="assets/logo.png" alt="Kaiser_Azimuth Metallic Emblem" class="brand-logo-full" /></span>
+        <span class="brand-title">Kaiser Azimuth</span>
       </a>
 
       <div class="telemetry">
+        <span class="mini-antique-instrument" title="Antique Navigational Instrument" aria-hidden="true">
+          <svg class="mini-antique-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="miniDialGrad" cx="50%" cy="45%" r="55%">
+                <stop offset="0%" stop-color="#222836" />
+                <stop offset="80%" stop-color="#11151e" />
+                <stop offset="100%" stop-color="#090b10" />
+              </radialGradient>
+              <linearGradient id="miniBrassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5d87d" />
+                <stop offset="50%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#8f6c18" />
+              </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="21.5" stroke="url(#miniBrassGrad)" stroke-width="2" fill="url(#miniDialGrad)" />
+            <circle cx="24" cy="24" r="17.5" stroke="rgba(212, 175, 55, 0.42)" stroke-width="0.9" stroke-dasharray="1.5 2.5" />
+            <line x1="24" y1="3" x2="24" y2="7" stroke="#f5d87d" stroke-width="1.4" stroke-linecap="round" />
+            <line x1="24" y1="41" x2="24" y2="45" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round" />
+            <line x1="3" y1="24" x2="7" y2="24" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round" />
+            <line x1="41" y1="24" x2="45" y2="24" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round" />
+            <g id="mini-instrument-needle">
+              <polygon points="24,8.5 27.2,24 24,21.5 20.8,24" fill="#f5d87d" />
+              <polygon points="24,39.5 26.5,24 24,26.5 21.5,24" fill="#9aa4b2" opacity="0.85" />
+            </g>
+            <circle cx="24" cy="24" r="3" fill="url(#miniBrassGrad)" stroke="#141822" stroke-width="1" />
+          </svg>
+        </span>
         <span>AZM: <strong id="azm-readout">035°</strong></span>
+        <span>VEC: <strong id="vec-readout">48.20° N, 16.37° E</strong></span>
         <span>SYS: <strong>ONLINE</strong></span>
       </div>
 
-      <nav class="nav-links">
-        <a href="#projects">Проекты</a>
-        <a href="#stack">Стек</a>
-        <a href="#contact">Связь</a>
-      </nav>
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Main Navigation">
+          <a href="#projects" data-i18n="nav_projects">Проекты</a>
+          <a href="#stack" data-i18n="nav_stack">Стек</a>
+          <a href="#contact" data-i18n="nav_contact">Связь</a>
+          <a href="#donate" data-i18n="nav_donate">Донат</a>
+        </nav>
+
+        <div class="lang-box" title="Language">
+          <select id="lang-select" class="lang-single-btn" aria-label="Select Language">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+            <option value="de">DE</option>
+            <option value="zh">中文</option>
+            <option value="fr">FR</option>
+          </select>
+        </div>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <div class="bento-grid">
 
-      <!-- Фото разработчика -->
-      <aside class="card avatar-card" data-azm="015">
+      <!-- ФОТО РАЗРАБОТЧИКА (РЕДАКТИРУЕМОЕ) -->
+      <aside class="card avatar-card anim-reveal" data-azm="015">
         <div class="avatar-frame">
-          <img src="assets/avatar.jpg" alt="Kaiser_Azimuth — Lead Developer" />
+          <img src="assets/avatar.jpg" alt="Kaiser_Azimuth" />
         </div>
         <div class="avatar-caption">
-          <span>KAISER_AZIMUTH // LEAD DEVELOPER</span>
+          <span>KAISER_AZIMUTH // DEVELOPER</span>
           <span>ID: 01</span>
         </div>
       </aside>
 
-      <!-- Hero -->
-      <section class="card hero-card" data-azm="035">
+      <!-- ГЛАВНЫЙ БЛОК HERO (РЕДАКТИРУЕМЫЙ) -->
+      <section class="card hero-card anim-reveal" data-azm="035">
         <div>
           <div class="card-label">
             <span>// VECTOR & ARCHITECTURE</span>
-            <span>48.20° N, 16.37° E</span>
+            <span id="hero-coords-live">BEARING LOCK: 035° · 48.20° N, 16.37° E</span>
           </div>
-          <h1 class="hero-title">Привет, я <span>Kaiser_Azimuth</span>. Проектирую надёжный софт и системы.</h1>
-          <p class="hero-desc">
-            Фокусируюсь на чистой архитектуре, автоматизации, мобильных и десктопных инструментах. Превращаю сложные задачи в предсказуемый и быстрый код.
-          </p>
+          <h1 class="hero-title"><span class="gothic-brand">Kaiser Azimuth</span> — <span id="hero-role-text" data-i18n="hero_role">независимый разработчик программных систем, утилит и других чудес цифровых миров.</span></h1>
+          <div class="hero-desc gothic-desc" data-i18n="hero_desc">
+            <p style="margin-bottom: 12px;">Kaiser Azimuth — независимый разработчик программных систем, утилит и других чудес цифровых миров. Работаю ради чистоты архитектуры, поиска нестандартных решений и самого процесса созидания.</p>
+            <p style="margin-bottom: 14px;">Верю в программы, которые уважают ресурсы устройства и время человека: минимум визуального шума, максимум пользы, предсказуемость в работе и внимание к деталям. Пока делаю всё это больше для себя, для души — ну а дальше всё может быть...</p>
+            <p style="margin-bottom: 8px; font-weight: 600; color: var(--gold-bright);">Направления работы:</p>
+            <ul style="margin: 0 0 18px 20px; display: flex; flex-direction: column; gap: 6px;">
+              <li><strong>Android &amp; Windows</strong> — нативные программные решения и прикладные инструменты для мобильных и десктопных сред.</li>
+              <li><strong>Веб-разработка и сайты</strong> — проектирование веб-пространств, цифровых платформ и интерактивных систем.</li>
+              <li><strong>Скрипты и автоматизация</strong> — автономные программные модули и инструменты оптимизации рабочих процессов.</li>
+              <li><strong>Искусственный интеллект</strong> — работа с генеративными моделями и алгоритмами машинного интеллекта.</li>
+              <li><strong>Криптовалюты и Web3</strong> — демистификация децентрализованных технологий: проектирование прикладной инфраструктуры, интегрирующей протоколы Web3 в повседневную цифровую среду.</li>
+            </ul>
+          </div>
         </div>
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">Смотреть проекты →</a>
-          <a href="https://github.com/Kaiser-Azimuth" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+          <a href="#projects" class="btn btn-primary" data-i18n="btn_projects">К проектам →</a>
+          <a href="#donate" class="btn btn-secondary" data-i18n="btn_donate">Поддержать криптой</a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="btn_contact">Контакты</a>
         </div>
       </section>
 
-      <!-- Интерактивный компас -->
-      <section class="card compass-card" data-azm="090">
+      <!-- СТАРИННЫЙ КОМПАС И ДИНАМИЧЕСКИЕ КООРДИНАТЫ -->
+      <section class="card compass-card anim-reveal" data-azm="090">
         <div class="compass-info">
           <div class="card-label" style="margin-bottom: 0;">
-            <span>BEARING // <span id="bearing-label">NE 035°</span></span>
+            <span>CHRONO-COMPASS // <span id="bearing-label">NE 035°</span></span>
           </div>
-          <p style="font-size: 14px; color: var(--muted);">
-            Наведите курсор на любую карточку, чтобы зафиксировать её азимут на лимбе.
+          <p class="gothic-desc" style="color: var(--muted);" data-i18n="compass_hint">
+            Наведите на карточку, нажмите на компас или поверните курс — координаты пересчитываются автоматически.
           </p>
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            Open to collaborations
+          <div class="dynamic-coords-box">
+            <div><span>GRID / LAT-LON:</span> <strong id="grid-readout">48.20° N, 16.37° E</strong></div>
+            <div><span>SECTOR / RADIAN:</span> <strong id="sector-readout">SEC-01 · 0.61 RAD</strong></div>
+          </div>
+          <div class="compass-controls">
+            <button type="button" class="mini-btn" id="rotate-left-btn">↺ -15°</button>
+            <button type="button" class="mini-btn" id="rotate-right-btn">+15° ↻</button>
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              <span data-i18n="status_open">available for work and for talk :)</span>
+            </div>
           </div>
         </div>
-        <div class="compass-dial">
-          <div class="needle" id="compass-needle"></div>
+
+        <div class="antique-compass-wrap" id="compass-click-area" title="Click to rotate +45°">
+          <svg class="antique-compass-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Старинный компас">
+            <defs>
+              <radialGradient id="brassBezel" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#f3d67d" />
+                <stop offset="55%" stop-color="#b68d2c" />
+                <stop offset="100%" stop-color="#5a4210" />
+              </radialGradient>
+              <radialGradient id="dialParchment" cx="50%" cy="45%" r="55%">
+                <stop offset="0%" stop-color="#221d14" />
+                <stop offset="75%" stop-color="#15120d" />
+                <stop offset="100%" stop-color="#0d0b08" />
+              </radialGradient>
+              <linearGradient id="needleGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f5dc88" />
+                <stop offset="50%" stop-color="#c89b32" />
+                <stop offset="100%" stop-color="#7c5b14" />
+              </linearGradient>
+              <linearGradient id="needleSteel" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#9aa3b2" />
+                <stop offset="100%" stop-color="#454c59" />
+              </linearGradient>
+            </defs>
+
+            <circle cx="100" cy="18" r="7" fill="none" stroke="url(#brassBezel)" stroke-width="3" />
+            <rect x="93" y="22" width="14" height="8" rx="2" fill="url(#brassBezel)" />
+            <circle cx="100" cy="104" r="88" fill="url(#brassBezel)" stroke="#3d2c09" stroke-width="2" />
+            <circle cx="100" cy="104" r="80" fill="#120f0a" stroke="#d4af37" stroke-width="1.2" />
+            <circle cx="100" cy="104" r="76" fill="url(#dialParchment)" />
+            <circle cx="100" cy="104" r="64" fill="none" stroke="rgba(212, 175, 55, 0.35)" stroke-width="1" stroke-dasharray="2 3" />
+            <circle cx="100" cy="104" r="46" fill="none" stroke="rgba(212, 175, 55, 0.22)" stroke-width="0.8" />
+
+            <g stroke="#d4af37" stroke-linecap="round">
+              <line x1="100" y1="30" x2="100" y2="38" stroke-width="1.8" />
+              <line x1="100" y1="170" x2="100" y2="178" stroke-width="1.8" />
+              <line x1="26" y1="104" x2="34" y2="104" stroke-width="1.8" />
+              <line x1="166" y1="104" x2="174" y2="104" stroke-width="1.8" />
+              <line x1="119" y1="32.5" x2="117" y2="38" stroke-width="1" opacity="0.7" />
+              <line x1="137" y1="39.5" x2="133.5" y2="44.5" stroke-width="1" opacity="0.7" />
+              <line x1="152.5" y1="51.5" x2="147.5" y2="55.5" stroke-width="1.2" opacity="0.85" />
+              <line x1="164.5" y1="67" x2="159" y2="69.5" stroke-width="1" opacity="0.7" />
+              <line x1="171.5" y1="85" x2="165.5" y2="86.5" stroke-width="1" opacity="0.7" />
+              <line x1="171.5" y1="123" x2="165.5" y2="121.5" stroke-width="1" opacity="0.7" />
+              <line x1="164.5" y1="141" x2="159" y2="138.5" stroke-width="1" opacity="0.7" />
+              <line x1="152.5" y1="156.5" x2="147.5" y2="152.5" stroke-width="1.2" opacity="0.85" />
+              <line x1="137" y1="168.5" x2="133.5" y2="163.5" stroke-width="1" opacity="0.7" />
+              <line x1="119" y1="175.5" x2="117" y2="170" stroke-width="1" opacity="0.7" />
+              <line x1="81" y1="175.5" x2="83" y2="170" stroke-width="1" opacity="0.7" />
+              <line x1="63" y1="168.5" x2="66.5" y2="163.5" stroke-width="1" opacity="0.7" />
+              <line x1="47.5" y1="156.5" x2="52.5" y2="152.5" stroke-width="1.2" opacity="0.85" />
+              <line x1="35.5" y1="141" x2="41" y2="138.5" stroke-width="1" opacity="0.7" />
+              <line x1="28.5" y1="123" x2="34.5" y2="121.5" stroke-width="1" opacity="0.7" />
+              <line x1="28.5" y1="85" x2="34.5" y2="86.5" stroke-width="1" opacity="0.7" />
+              <line x1="35.5" y1="67" x2="41" y2="69.5" stroke-width="1" opacity="0.7" />
+              <line x1="47.5" y1="51.5" x2="52.5" y2="55.5" stroke-width="1.2" opacity="0.85" />
+              <line x1="63" y1="39.5" x2="66.5" y2="44.5" stroke-width="1" opacity="0.7" />
+              <line x1="81" y1="32.5" x2="83" y2="38" stroke-width="1" opacity="0.7" />
+            </g>
+
+            <g transform="translate(100 104)" fill="rgba(212, 175, 55, 0.14)" stroke="rgba(212, 175, 55, 0.35)" stroke-width="0.7">
+              <polygon points="0,-54 7,-7 54,0 7,7 0,54 -7,7 -54,0 -7,-7" />
+              <polygon points="0,-36 5,-5 36,0 5,5 0,36 -5,5 -36,0 -5,-5" transform="rotate(45)" />
+            </g>
+
+            <text x="100" y="51" text-anchor="middle" fill="#e8c558" font-family="Cinzel, Georgia, serif" font-size="12" font-weight="700">N</text>
+            <text x="100" y="164" text-anchor="middle" fill="#b89635" font-family="Cinzel, Georgia, serif" font-size="11" font-weight="600">S</text>
+            <text x="153" y="108" text-anchor="middle" fill="#b89635" font-family="Cinzel, Georgia, serif" font-size="11" font-weight="600">E</text>
+            <text x="46" y="108" text-anchor="middle" fill="#b89635" font-family="Cinzel, Georgia, serif" font-size="11" font-weight="600">W</text>
+
+            <g id="compass-needle-group">
+              <polygon points="100,44 106,104 94,104" fill="url(#needleGold)" stroke="#3d2c09" stroke-width="0.7" />
+              <polygon points="100,158 105,104 95,104" fill="url(#needleSteel)" stroke="#1b1f26" stroke-width="0.7" />
+              <circle cx="100" cy="104" r="7" fill="url(#brassBezel)" stroke="#3d2c09" stroke-width="1.2" />
+              <circle cx="100" cy="104" r="2.5" fill="#f7e39c" />
+            </g>
+          </svg>
         </div>
       </section>
 
-      <!-- Заголовок проектов -->
-      <div class="section-header" id="projects">
-        <h2>Избранные проекты</h2>
+      <!-- ЗАГОЛОВОК ПРОЕКТОВ -->
+      <div class="section-header anim-reveal" id="projects">
+        <h2 data-i18n="sec_projects">Проекты</h2>
         <span>[ 01 — 03 ]</span>
       </div>
 
-      <!-- Проект 1 -->
-      <article class="card project-card" data-azm="120">
-        <div>
-          <div class="card-label"><span>PRJ // 01</span><span>2026</span></div>
-          <h3>Azimuth Core</h3>
-          <p>Модульный движок / утилита для автоматизации рабочих процессов и локальной синхронизации данных без облачных зависимостей.</p>
+      <!-- ПРОЕКТ 1 (ПРЕДВАРИТЕЛЬНАЯ ЗАГЛУШКА) -->
+      <article class="card project-card anim-reveal" data-azm="120">
+        <div class="project-title-row">
+          <div class="project-icon-box" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3 data-i18n="prj_1">Скоро будет</h3>
         </div>
-        <div>
-          <div class="tags">
-            <span class="tag">Rust</span>
-            <span class="tag">CLI</span>
-            <span class="tag">P2P</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Source ↗</a>
-            <a href="#">Docs ↗</a>
-          </div>
+        <p class="gothic-desc" style="color: var(--muted); margin-top: 8px;" data-i18n="prj_soon_desc">Раздел готовится к публикации, детали появятся позже.</p>
+        <div class="project-footer-note">
+          <span>SLOT // 01</span>
+          <span data-i18n="prj_soon_badge">SOON</span>
         </div>
       </article>
 
-      <!-- Проект 2 -->
-      <article class="card project-card" data-azm="215">
-        <div>
-          <div class="card-label"><span>PRJ // 02</span><span>2026</span></div>
-          <h3>Aether Telemetry</h3>
-          <p>Лёгкое Android-приложение и дашборд для мониторинга датчиков, сетевых узлов и офлайн-логирования в реальном времени.</p>
+      <!-- ПРОЕКТ 2 (ПРЕДВАРИТЕЛЬНАЯ ЗАГЛУШКА) -->
+      <article class="card project-card anim-reveal" data-azm="215">
+        <div class="project-title-row">
+          <div class="project-icon-box" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <path d="M9 3v18"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="prj_2">Скоро будет</h3>
         </div>
-        <div>
-          <div class="tags">
-            <span class="tag">Kotlin</span>
-            <span class="tag">Android</span>
-            <span class="tag">SQLite</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Source ↗</a>
-            <a href="#">Release ↗</a>
-          </div>
+        <p class="gothic-desc" style="color: var(--muted); margin-top: 8px;" data-i18n="prj_soon_desc">Раздел готовится к публикации, детали появятся позже.</p>
+        <div class="project-footer-note">
+          <span>SLOT // 02</span>
+          <span data-i18n="prj_soon_badge">SOON</span>
         </div>
       </article>
 
-      <!-- Проект 3 -->
-      <article class="card project-card" data-azm="310">
-        <div>
-          <div class="card-label"><span>PRJ // 03</span><span>2025</span></div>
-          <h3>NetWatch Script</h3>
-          <p>Фоновый системный контроллер для мониторинга стабильности канала связи и автоматического переключения резервных интерфейсов.</p>
+      <!-- ПРОЕКТ 3 (ПРЕДВАРИТЕЛЬНАЯ ЗАГЛУШКА) -->
+      <article class="card project-card anim-reveal" data-azm="310">
+        <div class="project-title-row">
+          <div class="project-icon-box" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="prj_3">Скоро будет</h3>
         </div>
-        <div>
-          <div class="tags">
-            <span class="tag">PowerShell</span>
-            <span class="tag">Python</span>
-            <span class="tag">Windows</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Source ↗</a>
-          </div>
+        <p class="gothic-desc" style="color: var(--muted); margin-top: 8px;" data-i18n="prj_soon_desc">Раздел готовится к публикации, детали появятся позже.</p>
+        <div class="project-footer-note">
+          <span>SLOT // 03</span>
+          <span data-i18n="prj_soon_badge">SOON</span>
         </div>
       </article>
 
-      <!-- Технологический стек -->
-      <section class="card stack-card" id="stack" data-azm="270">
-        <div class="card-label"><span>INSTRUMENTS & STACK</span></div>
+      <!-- ТЕХНОЛОГИЧЕСКИЙ СТЕК (РЕДАКТИРУЕМЫЙ) -->
+      <section class="card stack-card anim-reveal" id="stack" data-azm="270">
+        <div class="card-label"><span data-i18n="sec_stack">INSTRUMENTS & STACK</span></div>
         <div class="stack-groups">
           <div class="stack-group">
-            <h4>LANGUAGES</h4>
-            <div class="stack-list">Python, Kotlin, TypeScript, C#, SQL, PowerShell</div>
+            <h4 data-i18n="stack_lbl_lang">ЯЗЫКИ</h4>
+            <div class="stack-list" data-i18n="stack_lang">Python, Kotlin, C#, TypeScript, SQL, Bash</div>
           </div>
           <div class="stack-group">
-            <h4>MOBILE & WEB</h4>
-            <div class="stack-list">Android SDK, Jetpack Compose, HTML/CSS, REST / WebSockets</div>
+            <h4 data-i18n="stack_lbl_fw">ФРЕЙМВОРКИ И ПЛАТФОРМЫ</h4>
+            <div class="stack-list" data-i18n="stack_fw">Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3</div>
           </div>
           <div class="stack-group">
-            <h4>INFRA & TOOLS</h4>
-            <div class="stack-list">Git, GitHub Actions, Docker, Linux, Local AI / LLM</div>
+            <h4 data-i18n="stack_lbl_tools">ИНСТРУМЕНТЫ И ИНФРАСТРУКТУРА</h4>
+            <div class="stack-list" data-i18n="stack_tools">Git, Docker, Linux, CI/CD, RPC / REST API, локальные LLM- и Web3-узлы</div>
           </div>
           <div class="stack-group">
-            <h4>PRINCIPLES</h4>
-            <div class="stack-list">Offline-first, Privacy, Zero-bloat, Clean Architecture</div>
+            <h4 data-i18n="stack_lbl_focus">ФОКУС</h4>
+            <div class="stack-list" data-i18n="stack_focus">Детерминированный код, кроссплатформенные утилиты, прикладной AI, децентрализованные протоколы</div>
           </div>
         </div>
       </section>
 
-      <!-- Контакты -->
-      <section class="card contact-card" id="contact" data-azm="000">
+      <!-- КОНТАКТЫ (РЕДАКТИРУЕМЫЕ) -->
+      <section class="card contact-card anim-reveal" id="contact" data-azm="000">
         <div>
-          <div class="card-label"><span>TRANSMISSION</span></div>
-          <p style="font-size: 14px; color: var(--muted);">
-            Открыт к обсуждению проектов, open-source идей и технических задач.
+          <div class="card-label"><span data-i18n="sec_contact">CONTACTS</span></div>
+          <p class="gothic-desc" style="color: var(--muted);" data-i18n="contact_note">
+            Замените ссылки и контакты на свои актуальные данные.
           </p>
         </div>
         <div class="contact-links">
-          <a href="https://github.com/Kaiser-Azimuth" target="_blank" class="contact-item">
-            <span>GitHub</span>
+          <a href="https://t.me/Kaiser_Azimuth" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span>Telegram</span>
             <span>@Kaiser_Azimuth ↗</span>
           </a>
-          <a href="https://t.me/" target="_blank" class="contact-item">
-            <span>Telegram</span>
-            <span>@kaiser_azimuth ↗</span>
+          <a href="https://x.com/Kaiser_Azimuth" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span>X</span>
+            <span>@Kaiser_Azimuth ↗</span>
           </a>
-          <a href="mailto:dev@example.com" class="contact-item">
+          <a href="mailto:kaiserazimuth@gmail.com" class="contact-item">
             <span>Email</span>
-            <span>Написать письмо ↗</span>
+            <span>kaiserazimuth@gmail.com ↗</span>
           </a>
+        </div>
+      </section>
+
+      <!-- РАЗДЕЛ ПОЖЕРТВОВАНИЙ В КРИПТОВАЛЮТЕ (BTC, ETH/EVM, SOL, TRX) -->
+      <section class="card crypto-card anim-reveal" id="donate" data-azm="180">
+        <div class="card-label">
+          <span data-i18n="donate_title">ПОЖЕРТВОВАНИЯ · КРИПТОВАЛЮТА</span>
+          <span class="donate-tag" data-i18n="donate_hint">Актуальные адреса кошельков</span>
+        </div>
+        <p class="gothic-desc donate-sub" data-i18n="donate_desc">
+          Прямая поддержка проектов без посредников. Выберите сеть — отправляйте монеты или токены строго в указанной сети.
+        </p>
+
+        <div class="crypto-grid-pro">
+          <div class="wallet-card-pro">
+            <div class="wallet-head-pro">
+              <div>
+                <div class="wallet-title-pro">Bitcoin</div>
+                <div class="wallet-sub-pro">BTC · Native SegWit (bc1q)</div>
+              </div>
+              <span class="net-badge-pro">BTC</span>
+            </div>
+            <div class="wallet-addr-pro" id="addr-btc">bc1q98kpzrclu4u33xsujdt864jr74p6494jm5jdaj</div>
+            <div class="wallet-foot-pro">
+              <button type="button" class="copy-btn-pro" data-copy="addr-btc" data-i18n="btn_copy">Копировать адрес</button>
+            </div>
+          </div>
+
+          <div class="wallet-card-pro">
+            <div class="wallet-head-pro">
+              <div>
+                <div class="wallet-title-pro">Ethereum & EVM</div>
+                <div class="wallet-sub-pro">ETH / USDT / USDC · ERC20 · Polygon · Arbitrum · Base</div>
+              </div>
+              <span class="net-badge-pro">EVM</span>
+            </div>
+            <div class="wallet-addr-pro" id="addr-evm">0x8762D8dB20e2B4C181C1ea0C7fb1Bc0d6A0C7710</div>
+            <div class="wallet-foot-pro">
+              <button type="button" class="copy-btn-pro" data-copy="addr-evm" data-i18n="btn_copy">Копировать адрес</button>
+            </div>
+          </div>
+
+          <div class="wallet-card-pro">
+            <div class="wallet-head-pro">
+              <div>
+                <div class="wallet-title-pro">Solana</div>
+                <div class="wallet-sub-pro">SOL · USDC · SPL Tokens</div>
+              </div>
+              <span class="net-badge-pro">SOL</span>
+            </div>
+            <div class="wallet-addr-pro" id="addr-sol">5MCr8VCyXQkFd68aWQwng3a4uPsC2nq9E4cFkgPZEpMQ</div>
+            <div class="wallet-foot-pro">
+              <button type="button" class="copy-btn-pro" data-copy="addr-sol" data-i18n="btn_copy">Копировать адрес</button>
+            </div>
+          </div>
+
+          <div class="wallet-card-pro">
+            <div class="wallet-head-pro">
+              <div>
+                <div class="wallet-title-pro">Tron</div>
+                <div class="wallet-sub-pro">TRX · USDT (TRC20)</div>
+              </div>
+              <span class="net-badge-pro">TRON</span>
+            </div>
+            <div class="wallet-addr-pro" id="addr-trx">TRJqGVYkMLhR3zuGSmuvkByXFj3Hd5zFmp</div>
+            <div class="wallet-foot-pro">
+              <button type="button" class="copy-btn-pro" data-copy="addr-trx" data-i18n="btn_copy">Копировать адрес</button>
+            </div>
+          </div>
+
+          <div class="wallet-card-pro">
+            <div class="wallet-head-pro">
+              <div>
+                <div class="wallet-title-pro">TON</div>
+                <div class="wallet-sub-pro">TON · USDT (TON) · Jettons</div>
+              </div>
+              <span class="net-badge-pro">TON</span>
+            </div>
+            <div class="wallet-addr-pro" id="addr-ton">UQAiWFUE_qsYvnPduwNyDBsBJcH3foTc83fhlCM47dDeU_po</div>
+            <div class="wallet-foot-pro">
+              <button type="button" class="copy-btn-pro" data-copy="addr-ton" data-i18n="btn_copy">Копировать адрес</button>
+            </div>
+          </div>
+
+          <div class="wallet-card-pro">
+            <div class="wallet-head-pro">
+              <div>
+                <div class="wallet-title-pro">BNB Smart Chain</div>
+                <div class="wallet-sub-pro">BNB · USDT / BUSD (BEP20)</div>
+              </div>
+              <span class="net-badge-pro">BEP20</span>
+            </div>
+            <div class="wallet-addr-pro" id="addr-bsc">bnb178dt5v3nlr6aa5hdnfqfp4uzmjwphalgwyvspt</div>
+            <div class="wallet-foot-pro">
+              <button type="button" class="copy-btn-pro" data-copy="addr-bsc" data-i18n="btn_copy">Копировать адрес</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -665,24 +1523,371 @@
 
   <footer>
     <div class="container">
-      © 2026 Kaiser_Azimuth · Built for GitHub Pages · Precision over noise
+      © 2026 Kaiser_Azimuth · GitHub Pages · <span id="footer-azm">AZM 035°</span>
     </div>
   </footer>
 
   <script>
-    const needle = document.getElementById('compass-needle');
-    const azmReadout = document.getElementById('azm-readout');
-    const bearingLabel = document.getElementById('bearing-label');
+    const I18N = {
+      ru: {
+        nav_projects: "Проекты",
+        nav_stack: "Стек",
+        nav_contact: "Связь",
+        nav_donate: "Донат",
+        hero_role: "независимый разработчик программных систем, утилит и других чудес цифровых миров.",
+        hero_desc: "Kaiser Azimuth — независимый разработчик программных систем, утилит и других чудес цифровых миров. Работаю ради чистоты архитектуры, поиска нестандартных решений и самого процесса созидания.<br><br>Верю в программы, которые уважают ресурсы устройства и время человека: минимум визуального шума, максимум пользы, предсказуемость в работе и внимание к деталям. Пока делаю всё это больше для себя, для души — ну а дальше всё может быть...<br><br><strong>Направления работы:</strong><br>• Android &amp; Windows — нативные программные решения и прикладные инструменты для мобильных и десктопных сред.<br>• Веб-разработка и сайты — проектирование веб-пространств, цифровых платформ и интерактивных систем.<br>• Скрипты и автоматизация — автономные программные модули и инструменты оптимизации рабочих процессов.<br>• Искусственный интеллект — работа с генеративными моделями и алгоритмами машинного интеллекта.<br>• Криптовалюты и Web3 — демистификация децентрализованных технологий: проектирование прикладной инфраструктуры, интегрирующей протоколы Web3 в повседневную цифровую среду.",
+        btn_projects: "К проектам →",
+        btn_donate: "Поддержать криптой",
+        btn_contact: "Контакты",
+        compass_hint: "Наведите на карточку, нажмите на компас или поверните курс — координаты пересчитываются автоматически.",
+        status_open: "available for work and for talk :)",
+        sec_projects: "Проекты",
+        prj_1: "Скоро будет",
+        prj_2: "Скоро будет",
+        prj_3: "Скоро будет",
+        prj_soon_desc: "Раздел готовится к публикации, детали появятся позже.",
+        prj_soon_badge: "SOON",
+        sec_stack: "ИНСТРУМЕНТЫ И СТЕК",
+        stack_lbl_focus: "ФОКУС",
+        stack_lbl_tools: "ИНСТРУМЕНТЫ И ИНФРАСТРУКТУРА",
+        stack_lbl_fw: "ФРЕЙМВОРКИ И ПЛАТФОРМЫ",
+        stack_lbl_lang: "ЯЗЫКИ",
+        stack_lang: "Python, Kotlin, C#, TypeScript, SQL, Bash",
+        stack_fw: "Android SDK, .NET / Windows Desktop, Web, LLM / AI Runtime, EVM / Web3",
+        stack_tools: "Git, Docker, Linux, CI/CD, RPC / REST API, локальные LLM- и Web3-узлы",
+        stack_focus: "Детерминированный код, кроссплатформенные утилиты, прикладной AI, децентрализованные протоколы",
+        sec_contact: "CONTACTS",
+        contact_note: "Замените ссылки и контакты на свои актуальные данные.",
+        donate_title: "ПОЖЕРТВОВАНИЯ НА РАЗВИТИЕ (CRYPTO)",
+        donate_hint: "Замените адреса кошельков на свои перед публикацией",
+        donate_desc: "Поддержка развития проектов, инструментов и открытых утилит (в сети TRON поддерживаются TRX и USDT TRC20). Выберите сеть и скопируйте адрес.",
+        btn_copy: "Копировать адрес",
+        btn_copied: "Скопировано ✓"
+      },
+      en: {
+        nav_projects: "Projects",
+        nav_stack: "Stack",
+        nav_contact: "Contact",
+        nav_donate: "Donate",
+        hero_role: "software systems and tools developer.",
+        hero_desc: "Short summary of specialization, core engineering areas, and development workflow. Edit this text to fit your profile.",
+        btn_projects: "View projects →",
+        btn_donate: "Support with crypto",
+        btn_contact: "Contacts",
+        compass_hint: "Hover a card, click the compass, or step the bearing — coordinates recalculate dynamically.",
+        status_open: "available for work and for talk :)",
+        sec_projects: "Projects",
+        prj_1: "Coming soon",
+        prj_2: "Coming soon",
+        prj_3: "Coming soon",
+        prj_soon_desc: "Projects are being prepared and will be published soon.",
+        prj_soon_badge: "SOON",
+        sec_stack: "INSTRUMENTS & STACK",
+        stack_lbl_focus: "FOCUS",
+        stack_lbl_tools: "TOOLS & INFRA",
+        stack_lbl_fw: "FRAMEWORKS & PLATFORMS",
+        stack_lbl_lang: "LANGUAGES",
+        stack_lang: "Add your programming languages",
+        stack_fw: "Add frameworks & platforms",
+        stack_focus: "Add core focus areas",
+        sec_contact: "CONTACTS",
+        contact_note: "Replace links and contact details with your own.",
+        donate_title: "DEVELOPMENT DONATIONS (CRYPTO)",
+        donate_hint: "Replace wallet addresses with yours before publishing",
+        donate_desc: "Support ongoing development of projects, tools, and open utilities (TRX and USDT TRC20 on TRON). Pick a network and copy the address.",
+        btn_copy: "Copy address",
+        btn_copied: "Copied ✓"
+      },
+      de: {
+        nav_projects: "Projekte",
+        nav_stack: "Stack",
+        nav_contact: "Kontakt",
+        nav_donate: "Spenden",
+        hero_role: "Entwickler für Softwaresysteme und Werkzeuge.",
+        hero_desc: "Kurze Beschreibung Ihrer Schwerpunkte, Technologien und Arbeitsweise. Passen Sie diesen Text individuell an.",
+        btn_projects: "Zu den Projekten →",
+        btn_donate: "Mit Krypto unterstützen",
+        btn_contact: "Kontakte",
+        compass_hint: "Karte berühren, Kompass klicken oder Kurs drehen – Koordinaten werden dynamisch aktualisiert.",
+        status_open: "available for work and for talk :)",
+        sec_projects: "Projekte",
+        prj_1: "Demnächst",
+        prj_2: "Demnächst",
+        prj_3: "Demnächst",
+        prj_soon_desc: "Die Projekte werden vorbereitet und folgen in Kürze.",
+        prj_soon_badge: "SOON",
+        sec_stack: "WERKZEUGE & STACK",
+        stack_lbl_focus: "SCHWERPUNKT",
+        stack_lbl_tools: "TOOLS & INFRASTRUKTUR",
+        stack_lbl_fw: "FRAMEWORKS & PLATTFORMEN",
+        stack_lbl_lang: "SPRACHEN",
+        stack_lang: "Programmiersprachen eintragen",
+        stack_fw: "Frameworks & Plattformen eintragen",
+        stack_focus: "Schwerpunkte eintragen",
+        sec_contact: "CONTACTS",
+        contact_note: "Ersetzen Sie Links und Kontaktdaten durch eigene Angaben.",
+        donate_title: "SPENDEN FÜR DIE ENTWICKLUNG (CRYPTO)",
+        donate_hint: "Wallet-Adressen vor der Veröffentlichung anpassen",
+        donate_desc: "Unterstützung für die Weiterentwicklung von Projekten und Tools. Netzwerk wählen und Adresse kopieren.",
+        btn_copy: "Adresse kopieren",
+        btn_copied: "Kopiert ✓"
+      },
+      zh: {
+        nav_projects: "项目",
+        nav_stack: "技术栈",
+        nav_contact: "联系",
+        nav_donate: "赞赏",
+        hero_role: "软件系统与工具开发者。",
+        hero_desc: "填写您的技术方向、核心领域与开发理念。发布前可随时编辑此段简介。",
+        btn_projects: "查看项目 →",
+        btn_donate: "加密货币支持",
+        btn_contact: "联系方式",
+        compass_hint: "悬停卡片、点击罗盘或调整方位角，坐标与参数将实时联动更新。",
+        status_open: "available for work and for talk :)",
+        sec_projects: "项目",
+        prj_1: "即将上线",
+        prj_2: "即将上线",
+        prj_3: "即将上线",
+        prj_soon_desc: "项目内容正在整理中，敬请期待。",
+        prj_soon_badge: "SOON",
+        sec_stack: "工具与技术栈",
+        stack_lbl_focus: "核心方向",
+        stack_lbl_tools: "工具与基础设施",
+        stack_lbl_fw: "框架与平台",
+        stack_lbl_lang: "编程语言",
+        stack_lang: "填写编程语言",
+        stack_fw: "填写框架与平台",
+        stack_focus: "填写核心方向",
+        sec_contact: "CONTACTS",
+        contact_note: "请将链接与联系方式替换为您的真实信息。",
+        donate_title: "开发支持与赞赏 (CRYPTO)",
+        donate_hint: "发布前请替换为您的实际钱包地址",
+        donate_desc: "支持开源工具与项目的持续开发。选择对应网络并复制钱包地址。",
+        btn_copy: "复制地址",
+        btn_copied: "已复制 ✓"
+      },
+      fr: {
+        nav_projects: "Projets",
+        nav_stack: "Stack",
+        nav_contact: "Contact",
+        nav_donate: "Don",
+        hero_role: "développeur de systèmes logiciels et d'outils.",
+        hero_desc: "Brève présentation de votre spécialisation, de vos axes techniques et de votre méthode. Modifiez ce texte librement.",
+        btn_projects: "Voir les projets →",
+        btn_donate: "Soutenir en crypto",
+        btn_contact: "Contacts",
+        compass_hint: "Survolez une carte, cliquez sur la boussole ou ajustez le cap — les coordonnées se mettent à jour.",
+        status_open: "available for work and for talk :)",
+        sec_projects: "Projets",
+        prj_1: "Bientôt disponible",
+        prj_2: "Bientôt disponible",
+        prj_3: "Bientôt disponible",
+        prj_soon_desc: "Les projets sont en préparation et seront publiés prochainement.",
+        prj_soon_badge: "SOON",
+        sec_stack: "OUTILS & STACK",
+        stack_lbl_focus: "ORIENTATION",
+        stack_lbl_tools: "OUTILS & INFRASTRUCTURE",
+        stack_lbl_fw: "FRAMEWORKS & PLATEFORMES",
+        stack_lbl_lang: "LANGAGES",
+        stack_lang: "Ajoutez vos langages de programmation",
+        stack_fw: "Ajoutez vos frameworks et plateformes",
+        stack_focus: "Ajoutez vos domaines clés",
+        sec_contact: "CONTACTS",
+        contact_note: "Remplacez les liens et coordonnées par vos informations.",
+        donate_title: "DONS POUR LE DÉVELOPPEMENT (CRYPTO)",
+        donate_hint: "Remplacez les adresses de portefeuille avant publication",
+        donate_desc: "Soutenez le développement des projets et outils. Choisissez un réseau et copiez l'adresse.",
+        btn_copy: "Copier l'adresse",
+        btn_copied: "Copié ✓"
+      }
+    };
 
-    document.querySelectorAll('[data-azm]').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        const deg = card.getAttribute('data-azm');
-        needle.style.transform = `rotate(${deg}deg)`;
-        const formatted = deg.padStart(3, '0') + '°';
-        azmReadout.textContent = formatted;
-        bearingLabel.textContent = `AZM ${formatted}`;
+    const langSelect = document.getElementById('lang-select');
+
+    function applyLanguage(lang, isAuto = false) {
+      const dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang;
+      langSelect.value = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          if (/<[a-z][\s\S]*>/i.test(dict[key])) { el.innerHTML = dict[key]; } else { el.textContent = dict[key]; }
+        }
+      });
+    }
+
+    function detectBrowserLanguage() {
+      const candidates = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const item of candidates) {
+        const code = item.toLowerCase().slice(0, 2);
+        if (I18N[code]) return code;
+      }
+      return 'en';
+    }
+
+    const savedLang = localStorage.getItem('ka_lang');
+    if (savedLang && I18N[savedLang]) {
+      applyLanguage(savedLang, false);
+    } else {
+      applyLanguage(detectBrowserLanguage(), true);
+    }
+
+    langSelect.addEventListener('change', () => {
+      const chosen = langSelect.value;
+      localStorage.setItem('ka_lang', chosen);
+      applyLanguage(chosen, false);
+    });
+
+    const needleGroup = document.getElementById('compass-needle-group');
+    const miniNeedle = document.getElementById('mini-instrument-needle');
+    const azmReadout = document.getElementById('azm-readout');
+    const vecReadout = document.getElementById('vec-readout');
+    const gridReadout = document.getElementById('grid-readout');
+    const sectorReadout = document.getElementById('sector-readout');
+    const heroCoordsLive = document.getElementById('hero-coords-live');
+    const bearingLabel = document.getElementById('bearing-label');
+    const footerAzm = document.getElementById('footer-azm');
+
+    let currentAngle = 35;
+
+    function getCardinal(deg) {
+      const n = ((deg % 360) + 360) % 360;
+      if (n >= 337.5 || n < 22.5) return 'N';
+      if (n < 67.5) return 'NE';
+      if (n < 112.5) return 'E';
+      if (n < 157.5) return 'SE';
+      if (n < 202.5) return 'S';
+      if (n < 247.5) return 'SW';
+      if (n < 292.5) return 'W';
+      return 'NW';
+    }
+
+    function updateCompassState(deg) {
+      currentAngle = ((parseInt(deg, 10) % 360) + 360) % 360;
+      needleGroup.style.transform = `rotate(${currentAngle}deg)`;
+      if (miniNeedle) miniNeedle.style.transform = `rotate(${currentAngle}deg)`;
+
+      const rad = (currentAngle * Math.PI) / 180;
+      const rawLat = 48.20 + Math.cos(rad) * 1.45;
+      const rawLon = 16.37 + Math.sin(rad) * 1.85;
+      const latDir = rawLat >= 0 ? 'N' : 'S';
+      const lonDir = rawLon >= 0 ? 'E' : 'W';
+      const coordStr = `${Math.abs(rawLat).toFixed(2)}° ${latDir}, ${Math.abs(rawLon).toFixed(2)}° ${lonDir}`;
+
+      const formattedDeg = String(currentAngle).padStart(3, '0') + '°';
+      const cardinal = getCardinal(currentAngle);
+      const sectorNum = String(Math.floor(currentAngle / 30) + 1).padStart(2, '0');
+      const radStr = rad.toFixed(2) + ' RAD';
+
+      azmReadout.textContent = formattedDeg;
+      vecReadout.textContent = coordStr;
+      gridReadout.textContent = coordStr;
+      sectorReadout.textContent = `SEC-${sectorNum} · ${radStr}`;
+      bearingLabel.textContent = `${cardinal} ${formattedDeg}`;
+      heroCoordsLive.textContent = `BEARING LOCK: ${formattedDeg} · ${coordStr}`;
+      footerAzm.textContent = `AZM ${formattedDeg}`;
+    }
+
+    document.querySelectorAll('[data-azm]').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        const deg = parseInt(el.getAttribute('data-azm'), 10);
+        updateCompassState(deg);
       });
     });
+
+    document.getElementById('rotate-left-btn').addEventListener('click', () => {
+      updateCompassState(currentAngle - 15);
+    });
+
+    document.getElementById('rotate-right-btn').addEventListener('click', () => {
+      updateCompassState(currentAngle + 15);
+    });
+
+    document.getElementById('compass-click-area').addEventListener('click', () => {
+      updateCompassState(currentAngle + 45);
+    });
+
+    updateCompassState(35);
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.anim-reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    document.querySelectorAll('.copy-btn, .copy-btn-pro').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const targetId = btn.getAttribute('data-copy');
+        const addrText = document.getElementById(targetId).textContent.trim();
+        try {
+          await navigator.clipboard.writeText(addrText);
+        } catch (_) {
+          const tmp = document.createElement('textarea');
+          tmp.value = addrText;
+          document.body.appendChild(tmp);
+          tmp.select();
+          document.execCommand('copy');
+          document.body.removeChild(tmp);
+        }
+        const dict = I18N[langSelect.value] || I18N.en;
+        btn.textContent = dict.btn_copied;
+        setTimeout(() => {
+          const currentDict = I18N[langSelect.value] || I18N.en;
+          btn.textContent = currentDict.btn_copy;
+        }, 1600);
+      });
+    });
+    const brandEl = document.querySelector('.brand');
+    const logoWrap = document.querySelector('.brand-logo-wrap');
+    if (brandEl && logoWrap) {
+      brandEl.addEventListener('mousemove', (e) => {
+        const rect = logoWrap.getBoundingClientRect();
+        const nx = ((e.clientX - rect.left) / Math.max(rect.width, 1)) - 0.5;
+        const ny = ((e.clientY - rect.top) / Math.max(rect.height, 1)) - 0.5;
+        const rotY = nx * 26;
+        const rotX = -ny * 26;
+        const twist = nx * 8;
+        logoWrap.style.animation = 'none';
+        logoWrap.style.transform = `perspective(420px) translateY(-4px) scale(1.1) rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg) rotateZ(${twist.toFixed(1)}deg)`;
+      });
+      brandEl.addEventListener('mouseleave', () => {
+        logoWrap.style.transform = '';
+        logoWrap.style.animation = 'emblemMotion 5.4s cubic-bezier(0.37, 0, 0.63, 1) infinite';
+      });
+      brandEl.addEventListener('click', () => {
+        logoWrap.style.animation = 'none';
+        logoWrap.style.transform = 'perspective(420px) translateY(-6px) scale(1.14) rotateZ(-4deg)';
+        setTimeout(() => {
+          logoWrap.style.transform = 'perspective(420px) translateY(-3px) scale(1.08) rotateZ(4deg)';
+        }, 140);
+        setTimeout(() => {
+          logoWrap.style.transform = '';
+          logoWrap.style.animation = 'emblemMotion 5.4s cubic-bezier(0.37, 0, 0.63, 1) infinite';
+        }, 320);
+      });
+    }
+
+    document.querySelectorAll('.card, .section-header').forEach(surface => {
+      surface.addEventListener('mousemove', (e) => {
+        const rect = surface.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        surface.style.setProperty('--lg-x', `${x}px`);
+        surface.style.setProperty('--lg-y', `${y}px`);
+      });
+    });
+
+
+
   </script>
 </body>
 </html>
