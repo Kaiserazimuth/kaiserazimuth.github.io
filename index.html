@@ -1134,18 +1134,19 @@
     }
     .crypto-grid-pro {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
     }
     .wallet-card-pro {
       background: linear-gradient(155deg, rgba(255, 255, 255, 0.045), rgba(10, 12, 16, 0.72));
       border: 1px solid rgba(255, 255, 255, 0.11);
       border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
+      padding: 13px 12px;
+      display: grid;
+      grid-template-rows: 76px auto 66px auto;
+      gap: 10px;
+      min-width: 0;
       transition: transform 0.22s ease, border-color 0.22s ease;
     }
     .wallet-card-pro:hover {
@@ -1154,65 +1155,126 @@
     }
     .wallet-head-pro {
       display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 4px;
+      height: 76px;
+      overflow: hidden;
+    }
+    .wallet-head-top {
+      display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
+      align-items: center;
+      gap: 6px;
+      min-height: 22px;
     }
     .wallet-title-pro {
       font-weight: 600;
-      font-size: 15px;
+      font-size: 13.5px;
+      line-height: 1.2;
       color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .wallet-sub-pro {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10.5px;
+      line-height: 1.32;
       color: var(--muted);
-      margin-top: 3px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .net-badge-pro {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
+      line-height: 1;
       color: var(--gold-bright);
       background: rgba(212, 175, 55, 0.14);
       border: 1px solid rgba(212, 175, 55, 0.35);
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .wallet-qr-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 9px;
+      background: rgba(8, 10, 14, 0.72);
+      border: 1px solid rgba(212, 175, 55, 0.24);
+      border-radius: 10px;
+    }
+    .wallet-qr-img {
+      width: 116px;
+      height: 116px;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 5px;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(242, 211, 116, 0.35);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .wallet-card-pro:hover .wallet-qr-img {
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55), 0 0 14px rgba(212, 175, 55, 0.32);
     }
     .wallet-addr-pro {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 10.5px;
+      line-height: 1.38;
       color: var(--text);
       background: rgba(8, 10, 14, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
-      padding: 10px 11px;
+      padding: 7px 8px;
+      height: 66px;
+      display: flex;
+      align-items: center;
       word-break: break-all;
+      overflow-wrap: anywhere;
       user-select: all;
+    }
+    .wallet-foot-pro {
+      display: flex;
+      align-items: stretch;
     }
     .copy-btn-pro {
       width: 100%;
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 500;
-      padding: 8px 14px;
+      padding: 8px 10px;
       border-radius: 8px;
       border: 1px solid rgba(242, 211, 116, 0.38);
-      background: rgba(212, 175, 55, 0.14);
+      background: rgba(212, 175, 55, 0.12);
       color: var(--gold-bright);
       cursor: pointer;
+      white-space: nowrap;
       transition: all 0.2s ease;
     }
     .copy-btn-pro:hover {
-      background: var(--gold);
-      color: #0a0c10;
-      border-color: var(--gold);
-      font-weight: 600;
+      background: rgba(212, 175, 55, 0.24);
+      border-color: var(--gold-bright);
+      transform: translateY(-1px);
     }
-    @media (max-width: 1024px) {
-      .crypto-grid-pro { grid-template-columns: repeat(2, 1fr); }
+    .copy-btn-pro.copied {
+      background: rgba(46, 204, 113, 0.18);
+      border-color: rgba(46, 204, 113, 0.55);
+      color: #6ee7b7;
     }
-    @media (max-width: 640px) {
+    @media (max-width: 1080px) {
+      .crypto-grid-pro { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .crypto-grid-pro { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
       .crypto-grid-pro { grid-template-columns: 1fr; }
     }
   </style>
@@ -1535,17 +1597,20 @@
           <span class="donate-tag" data-i18n="donate_hint">Актуальные адреса кошельков</span>
         </div>
         <p class="gothic-desc donate-sub" data-i18n="donate_desc">
-          Прямая поддержка проектов без посредников. Выберите сеть — отправляйте монеты или токены строго в указанной сети.
+          Поддержите разработчика — открытый код работает на магии и участии сообщества. Если мои продукты помогли решить вашу задачу, буду рад виртуальному эспрессо. Ваш вклад действительно имеет значение: он помогает создавать продуманные инструменты и избавлять сеть от лишних сложностей.
         </p>
 
         <div class="crypto-grid-pro">
           <div class="wallet-card-pro">
             <div class="wallet-head-pro">
-              <div>
+              <div class="wallet-head-top">
                 <div class="wallet-title-pro">Bitcoin</div>
-                <div class="wallet-sub-pro">BTC · Native SegWit (bc1q)</div>
+                <span class="net-badge-pro">BTC</span>
               </div>
-              <span class="net-badge-pro">BTC</span>
+              <div class="wallet-sub-pro">BTC · Native SegWit (bc1q)</div>
+            </div>
+            <div class="wallet-qr-wrap">
+              <img class="wallet-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSCAIAAACw+wkVAAADsUlEQVR42u3dO27cMBQF0DhIayBd9r+8dAGyAHkB0whv3o/yOX1GM/IFiRtK5Md1XT+g10+3ALFD7EDsEDsQO8QOxA6xA7FD7BA7EDvEDsQOsQOxY6NfsX/2+fvP4Jf+/+9vynd+/Zw7v+vO1e9cK3ZXY99529/CaIdJFrEDsUPsoL/JZjWarNYca45ZLTXrbmTdw9m/hdEOkyyIHWKH2MEpTTar9dR1wLq11M414qxrzTZiox0mWcQOxA6xg51NtlNdU3tqlzTaYZIFsUPsQOzQZGdlrWZmddu6N16f0W2NdogdYgdih9jBzibb2bliK57b9nequ2Pb+q/RDrFD7EDsEDvY0GRnd9C9092y1lKzrhW7q1l7UhntMMmC2CF2IHYc6+O6rkf+sM43Z7Pabuz7GO1A7BA7EDvEjm9m3Xmydeelxj456+p1n5O1+ly3smy0wySL2IHYIXaQqnBNtnNnpNmdmuruWF3T73za2WiHSRaxA7FD7CDV8N7F+3dGqlu3fb1WXbN+/ZzOk3ONdphkETsQO8QONjTZunZZt97a2ZpnG3pn9zfaYZIFsUPsEDto17rj0+xJrE/9nKznhLMautEOkyyIHWKH2MEpTXa2Ge1fhcy6h7MnB3lPFpMsiB1iB2LHAoV7F2d1rtndgzvXSTt3xLJ3MSZZEDvEDsSOY607T7auhcW65Gyv79y3OeuvY7TDJAtih9ghdnBKk61b46vbvzerb8Zs2xWqrukb7TDJInYgdogdpCrcu3j/+a2dz9PeOQdntpPGzhuyJotJFsQOsUPs4JQmW9d/s1pzVret+11ZV8/q2p17ZBntMMkidiB2iB2c0mT3N7XOvZLqnlu+87vu3J+6FXOjHSZZxA7EDrGDNwTfk+3cQWh2P6XOXr//6t6TxSQLYofYgdhxbpPdpvP91rqncOu65Lbdno12mGQROxA7xA7eUHiebJ1tb9fOPks8uyO00Q6TLIgdYofYwSlNtrP1ZD0nvH+f5Nk77z1ZTLIgdogdiB3frcnGGmhWM5pdI6777XVn98zeQ6MdJlnEDsQOsYOdTXa/rFXIrHNp6/rvtv8fMNphkkXsQOwQO9BkY40v1gqznna+04iz+ubsibdGO0yyiB2IHWIHpzTZundOYzpP/Jldk826G0Y7TLIgdogdiB3PbrLb3lSd3Qcpdn9mO2lntzXaYZJF7EDsEDt4w0POk8VoB2KH2IHYIXaIHYgdYgdih9iB2CF2IHaIHWIHYofYwdu+AI9hOfFZX/5/AAAAAElFTkSuQmCC" alt="QR Bitcoin (BTC)" loading="lazy" />
             </div>
             <div class="wallet-addr-pro" id="addr-btc">bc1q98kpzrclu4u33xsujdt864jr74p6494jm5jdaj</div>
             <div class="wallet-foot-pro">
@@ -1555,11 +1620,14 @@
 
           <div class="wallet-card-pro">
             <div class="wallet-head-pro">
-              <div>
-                <div class="wallet-title-pro">Ethereum & EVM</div>
-                <div class="wallet-sub-pro">ETH / USDT / USDC · ERC20 · Polygon · Arbitrum · Base</div>
+              <div class="wallet-head-top">
+                <div class="wallet-title-pro">EVM &amp; BNB</div>
+                <span class="net-badge-pro">ERC20/BEP20</span>
               </div>
-              <span class="net-badge-pro">EVM</span>
+              <div class="wallet-sub-pro">ETH · BNB · USDT · USDC · Polygon · Arbitrum · Base</div>
+            </div>
+            <div class="wallet-qr-wrap">
+              <img class="wallet-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSCAIAAACw+wkVAAADrklEQVR42u3dMY7bQBAEQJ9xqQFn/v/znBnwA+gHXEKMemZHdFV8J1JiYxeN5ZIf13V9g1nf/QSIHWIHYofYgdghdiB2iB2IHWKH2IHYIXYgdogdiB0bfdb+7cfPXwdP+u+f35Fz/vo5qb/p+w3vnM/+a2G0wySL2IHYIXYw32RTjSbV+FLt8s5/1brk1/+6c6xU2528FkY7TLIgdogdYgfv0mTPtrBaAz3biCc/Z1sjNtphkkXsQOwQO9jZZCdNNrXasWodOdWsjXYgdogdYgdihya7TWo3a+ru4tp+21TXNtqB2CF2iB2IHZpsql32Sa2Tpr5X6p7kbXc7G+0wyYLYIXYgdjypyZ59gm6qFW57vvEzroXRDrFD7EDsEDuI+riu65FfrG+9ta/JPnVXrNEOsUPsQOwQO4ha9z7Zvvel1j45teM1tSv2GSvLRjtMsogdiB1iBy8orsmefaJR34rntjuHJ+8Tnlw1NtphkkXsQOwQO3hB4z7ZybXLvicjpdZtU//V9+agyWcpG+0wySJ2IHaIHbygcU32HaX6+GT77rte7i7GJAtih9iB2PGkJltrT3f63bZ2ebaT9p1P3+5jox0mWRA7xA6xg/dtsrWm1tcBJz95ch/xtmMZ7TDJgtghdogdvEuT7etKd/TtHq3Z3yX7rqDRDpMsiB1ih9hBs9gTn/ru+K11rr7nKU127VoDra0R992BbLTDJIvYgdghdrChydY6zrZdqH09cXK1N3XOqV/DaIdJFsQOsUPsYGeTnWyg2z55/w7cvnNONXSjHSZZxA7EDrGDF6x7C8+2e3fPnvPk3tXJtW+jHSZZxA7EDrGDJzXZs86uyaZa8/63CxntMMkidiB2iB284HPyYJNvR031sm1H7/udjXaYZEHsEDsQO97E4ffJnu3IqWP1vU829S28TxbEDrFD7EDseJDRZxen1N6nk2qOk6vGqWZ9trca7TDJInYgdogdbGiytWbU15rPPoU41axT+1v7WJPFJAtih9iB2PGkJltroKledudYfevIk6059S3Orqob7RA7xA7EDrGDnU32rP37SVNdctv5GO0wyYLYIXaIHWiyNbVOeqffbXuecF8jtk8WkyyIHWIHYsf/1mTPvudlck128g07tW96p49PXi+jHSZZxA7EDrGDDU327L7LVCet9dbUrzH5DOTJFVijHSZZxA7EDrGDqIe8TxajHYgdYgdih9ghdiB2iB2IHWIHYofYgdghdogdiB1iBy/7B3DyWLvpmJFFAAAAAElFTkSuQmCC" alt="QR EVM & BNB Smart Chain (ERC20 / BEP20)" loading="lazy" />
             </div>
             <div class="wallet-addr-pro" id="addr-evm">0x8762D8dB20e2B4C181C1ea0C7fb1Bc0d6A0C7710</div>
             <div class="wallet-foot-pro">
@@ -1569,11 +1637,14 @@
 
           <div class="wallet-card-pro">
             <div class="wallet-head-pro">
-              <div>
+              <div class="wallet-head-top">
                 <div class="wallet-title-pro">Solana</div>
-                <div class="wallet-sub-pro">SOL · USDC · SPL Tokens</div>
+                <span class="net-badge-pro">SOL</span>
               </div>
-              <span class="net-badge-pro">SOL</span>
+              <div class="wallet-sub-pro">SOL · USDC · SPL Tokens</div>
+            </div>
+            <div class="wallet-qr-wrap">
+              <img class="wallet-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSCAIAAACw+wkVAAADtklEQVR42u3dQY7UQBAEQBZxReLG/5/HDYkHmAdwsWqrstom4jw79uykupXTtvvjuq4vkPXVvwCxQ+xA7BA7EDvEDsQOsQOxQ+wQOxA7xA7EDrEDseNE32p/9v3Hz8WT/vP7V8s5//s+dz7XnaN3HevO0Z/4XRjtMMkidiB2iB3km2xXo+lqzXea41xP3D36ad+F0Q6TLIgdYofYwVOabFfr6eqAtdfU1lJrr6n91fnfhdEOkyyIHWKH2MFzm2zSXFPrWpOtXbc8122NdphkQewQOxA7NNldXR2w6w7c2tHf2luNdogdYgdih9jBU5pssoXV1mR3n5U018d3vwujHSZZEDvEDrGDpzTZd7TCudfc+Y/t3hVrtMMkC2KH2IHY8RAf13W98oMl75ztuia56wyNdiB2iB1iB2LHqx23n+zcfqlz79y1kps8VvKcjXaYZBE7EDvEDloV12S7nsR7569qbe6JHTB5VfBcjzbaYZIFsUPsEDs4s8nOmdutJnlf6hOvAU5+CqMdJlnEDsQOsYNPGHx28W67vNN/59pcck22a+07+f8x2mGSRexA7BA7yDfZZAOd22En+aSmrvbdtWa9+7wpox0mWcQOxA6xg3yT7Wphd5pR12pm7VhzjbjrF4PkSq7RDpMsiB1iB2LHm5rsaXehnvYM5Ll9aZO/GBjtMMmC2CF2IHYcoO2JT3Mrg7srnl2fPbkGmrzj1WiHSRbEDrFD7CBucD/ZuZ1xdhtx8nx2r22e679GO0yyiB2IHWIH+SY71wGTjbj2mtrzlOZ669za7tyvAUY7TLKIHYgdYgefULy6OLmW2iW5Jtt1hrvHsp8sJlkQO8QOxI4jRZ9dnOxcXXv31D7F7me/87ncJ4tJFsQOsQOxQ5O9056S77N7p2ryWVK7O8Ma7TDJgtghdogdxLU9u3hX8slIyZba9SnmztkTnzDJgtghdogdxA0+u3hO1+6otf572k61c2vNc78GGO0wySJ2IHaIHeSb7FzH6eqbtX43d3/r3O8DyXtyjXaYZEHsEDsQO97UZHd72dw9uV3rpF1dcnfPHVcXY5IFsUPsQOx4d5M9Ta2pdV27O3e1c9f7JFuz0Q6TLGIHYofYgSbbJdkTa+ezu/rsPllMsiB2iB2IHe9usrv7vCSfnpTc8XaufRvtMMmC2CF2IHb8b032tK50/tOTat22dobJYxntMMmC2CF2iB0Me8l+shjtQOwQOxA7xA6xA7FD7EDsEDsQO8QOxA6xQ+xA7BA7+LS/l+k7NU+UsGYAAAAASUVORK5CYII=" alt="QR Solana (SOL)" loading="lazy" />
             </div>
             <div class="wallet-addr-pro" id="addr-sol">5MCr8VCyXQkFd68aWQwng3a4uPsC2nq9E4cFkgPZEpMQ</div>
             <div class="wallet-foot-pro">
@@ -1583,11 +1654,14 @@
 
           <div class="wallet-card-pro">
             <div class="wallet-head-pro">
-              <div>
+              <div class="wallet-head-top">
                 <div class="wallet-title-pro">Tron</div>
-                <div class="wallet-sub-pro">TRX · USDT (TRC20)</div>
+                <span class="net-badge-pro">TRC20</span>
               </div>
-              <span class="net-badge-pro">TRON</span>
+              <div class="wallet-sub-pro">TRX · USDT (TRC20)</div>
+            </div>
+            <div class="wallet-qr-wrap">
+              <img class="wallet-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSCAIAAACw+wkVAAADsUlEQVR42u3dQW7cMBAEwDjI1UBu+f/zcguQB8hPiEBNz1BM1Xlta3cbJNqkqI/rur5Br+8+AsQOsQOxQ+xA7BA7EDvEDsQOsUPsQOwQOxA7xA7Ejh39WPuxz5+/Bi/675/f/7yeqtfMXuHab579Lox2mGRB7BA7xA72bLJVjaaqNa/1u7UOeOedVv3m3BXmvgujHSZZEDvEDrGDtzTZzp44+7eqmv6dVdqqK9zt8zHaYZJF7EDsEDvYs8m+UW4P8GyPNtqB2CF2iB2IHZrs/nJ7gO/8rar7do12IHaIHYgdYgedTXZ27+5ab+08Jyq32jv7XRjtMMmC2CF2iB28pcnOnqC7tr45ewZyriPPfhdGO8QOxA6xQ+xgzya72xrfbmc3dfbWN+5JNtohdogdiB1iB/1NNneHaVUHrNpvXHU3a+6aZ58K5HmymGRB7BA7xA7e0mQ798HmzgHOPYU29yyhqnY5u5JrtEPsEDsQO8QOHvi4rqukc+WaUW5fblWL73xfnWcy59670Q6TLGIHYofYwQ5N9k7r2a27zbbv3OdstAOxQ+wQOxA7NNmqzrXWdte6227P3Kl6F7n33tmjjXaYZBE7EDvEDh4oO/EptzK41jdnd+Hmeuv+LdVoh0kWxA6xQ+xgzyaba4W5s6RyT5jNXU/uPwZ33qk1WUyyIHaIHYgdZzfZtfaU+6mqrp176uvaCmxuTbbzHC2jHSZZxA7EDrGDB4L3yZ5xh2luf+8Zn7PRDpMsiB1ih9hBu+3WZHPnG892tzd2UruLMcmC2CF2IHac1GQ77/q806fWXtN5KlRnJ+18/pHRDpMsiB1ih9hBu7LdxVXdbfYpM533iuauufO7MNphkgWxQ+wQO2jXenZx7kSj3JrsWuOr6shVr5n9j4HRDpMsYgdih9hBqeCabKfdTmHqbMRrV2h3MSZZEDvEDsSO/63Jdu65reqk+z8Ztmo9ev/TjI12mGQROxA7xA4eKNtdfMaKZ+4Kq05qqvrkO09pNtphkkXsQOwQO9izyVY10KqGtbZymvvruRXhzu/LmiwmWRA7xA7EjrObbKfcPZ6de3er7mbNtfiqz9loh0kWsQOxQ+xAk13rXLPPXa1as+7s0UY7TLIgdogdiB1nN9nZOzE7G/HsycmdzzayuxiTLIgdYgdix0lNdvY041xLreqSuQZa1Uk7v0GjHSZZxA7EDrGDBw55nixGOxA7xA7EDrFD7EDsEDsQO8QOxA6xA7FD7BA7EDvEDh77AhsBQJPl2W+QAAAAAElFTkSuQmCC" alt="QR Tron (TRC20)" loading="lazy" />
             </div>
             <div class="wallet-addr-pro" id="addr-trx">TRJqGVYkMLhR3zuGSmuvkByXFj3Hd5zFmp</div>
             <div class="wallet-foot-pro">
@@ -1597,29 +1671,18 @@
 
           <div class="wallet-card-pro">
             <div class="wallet-head-pro">
-              <div>
+              <div class="wallet-head-top">
                 <div class="wallet-title-pro">TON</div>
-                <div class="wallet-sub-pro">TON · USDT (TON) · Jettons</div>
+                <span class="net-badge-pro">TON</span>
               </div>
-              <span class="net-badge-pro">TON</span>
+              <div class="wallet-sub-pro">TON · USDT (TON) · Jettons</div>
+            </div>
+            <div class="wallet-qr-wrap">
+              <img class="wallet-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSCAIAAACw+wkVAAADr0lEQVR42u3dQW4bMRAEwDjwNUBu+f/zfAuQBygP8EUYTc+QQtXZ0q5XDRItrrgfj8fjB8z66RIgdogdiB1iB2KH2IHYIXYgdogdYgdih9iB2CF2IHac6LP2sl+//yye9L+/X4UzrL0qd4annfPkf2q0wySL2IHYIXYw32S7Gk1Xa851wO/vkzufrmu4+1kY7TDJgtghdogd3NJku1pPVwvLrVTWOvIz3bbWf8//LIx2mGQROxA7xA5uabKTaiunXe/z/VXPvM/uXcFGO8QOxA6xA7FDk92VW82sHT3XtY12IHaIHYgdYocmm3vryS5Z67bP/E3XKm3tfLoa+u5nYbRD7BA7EDvEDs5ssqetMHZ1ydpOTV3Hql3V81d7jXaIHWIHYofYwXyTPW2N75k2N3nOk7s5nf9ZGO0QO8QOxA6xgxOabO4O265j7XbbyefS7u5tZbTDJAtih9ghdnBLk53srbnfk04+9XWys+f6b9e3AUY7TLKIHYgdYgcv+Hg8HmMHy+3xm1thzK0j574f2L1iRjtMsiB2iB1iB2c22cnnzpx2D/CN9yTndrsy2mGSBbFD7BA7uKXJ1npZ7g7b01ZOa1cjt5vxZCM22mGSBbFD7BA7CLvgebK7v8Ctdcmuvpm743e3NRvtMMkidiB2iB3MN9nJ31Tmnql64/pm7pwnr4bRDpMsYgdih9jBC9ruLn7X5/JMruTmVkVPe+as0Q6xQ+xA7BA7OKHJ5uy23do7Tx5rslkb7TDJgtghdiB2HOBz9/CnPWFnspPu7h68u5eU0Q6TLGIHYofYwQvansKT62W7K4y5dpm7Pl19PHdVjXaYZBE7EDvEDuab7GkNy69iXz9W7sob7TDJInYgdogdtGrbu7jWaHbb3OT57D49Nrf/s9EOkyyIHWKH2MG4C3Z86upcXT1x8he4k3doG+0wyYLYIXYgdlwi+DzZnNrq6mmdNNfiJ/dJNtphkgWxQ+wQO7ilyeY6TlfDyr3qtG572rNijXaIHYgdYofYwS1NNtf4Jrv2ZB+f3Km464rZ8QmTLIgdYgdix3s32UldO/HWuu3ur1lrO0fVjuXuYkyyIHaIHYgdmmyXrtXDXG/dXWve/cbAaIdJFrEDsUPs4JYmu9uwcn+TW+3N3c072dmNdphkQewQO8QObmmyu7sZP9PUanfh5u7vnez1uV2ajXaYZEHsEDvEDsa9yfNkMdqB2CF2IHaIHWIHYofYgdghdiB2iB2IHWKH2IHYIXbwsv+55j3141WVUwAAAABJRU5ErkJggg==" alt="QR TON" loading="lazy" />
             </div>
             <div class="wallet-addr-pro" id="addr-ton">UQAiWFUE_qsYvnPduwNyDBsBJcH3foTc83fhlCM47dDeU_po</div>
             <div class="wallet-foot-pro">
               <button type="button" class="copy-btn-pro" data-copy="addr-ton" data-i18n="btn_copy">Копировать адрес</button>
-            </div>
-          </div>
-
-          <div class="wallet-card-pro">
-            <div class="wallet-head-pro">
-              <div>
-                <div class="wallet-title-pro">BNB Smart Chain</div>
-                <div class="wallet-sub-pro">BNB · USDT / BUSD (BEP20)</div>
-              </div>
-              <span class="net-badge-pro">BEP20</span>
-            </div>
-            <div class="wallet-addr-pro" id="addr-bsc">bnb178dt5v3nlr6aa5hdnfqfp4uzmjwphalgwyvspt</div>
-            <div class="wallet-foot-pro">
-              <button type="button" class="copy-btn-pro" data-copy="addr-bsc" data-i18n="btn_copy">Копировать адрес</button>
             </div>
           </div>
         </div>
@@ -1665,7 +1728,7 @@
       "contact_note": "Прямая связь для сотрудничества, идей и обсуждения проектов.",
       "donate_title": "ПОЖЕРТВОВАНИЯ · КРИПТОВАЛЮТА",
       "donate_hint": "Актуальные адреса кошельков",
-      "donate_desc": "Прямая поддержка проектов без посредников. Выберите сеть — отправляйте монеты или токены строго в указанной сети.",
+      "donate_desc": "Поддержите разработчика — открытый код работает на магии и участии сообщества. Если мои продукты помогли решить вашу задачу, буду рад виртуальному эспрессо. Ваш вклад действительно имеет значение: он помогает создавать продуманные инструменты и избавлять сеть от лишних сложностей.",
       "btn_copy": "Копировать адрес",
       "btn_copied": "Скопировано ✓"
 };
