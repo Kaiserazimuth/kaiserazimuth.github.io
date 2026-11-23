@@ -894,8 +894,45 @@
       font-weight: 700;
     }
 
+    .project-card-featured {
+      border-color: rgba(212, 175, 55, 0.32);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.08), transparent 55%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(10, 12, 16, 0.78));
+    }
+
+    .project-card-featured:hover {
+      border-color: rgba(242, 211, 116, 0.65);
+    }
+
+    .project-desc-text {
+      color: var(--text);
+      font-size: 16.5px;
+      line-height: 1.52;
+      margin-top: 10px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .project-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .project-tag-pill {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--gold-bright);
+      background: rgba(212, 175, 55, 0.11);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
     .project-footer-note {
-      margin-top: 20px;
+      margin-top: 16px;
       padding-top: 12px;
       border-top: 1px dashed var(--border);
       font-family: var(--mono);
@@ -903,6 +940,28 @@
       color: var(--muted);
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--gold-bright);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .project-repo-link:hover {
+      background: rgba(212, 175, 55, 0.24);
+      border-color: var(--gold-bright);
+      transform: translateY(-1px);
     }
 
     /* Стек и контакты */
@@ -1489,21 +1548,32 @@
         <span>[ 01 — 03 ]</span>
       </div>
 
-      <!-- ПРОЕКТ 1 (ПРЕДВАРИТЕЛЬНАЯ ЗАГЛУШКА) -->
-      <article class="card project-card anim-reveal" data-azm="120">
-        <div class="project-title-row">
-          <div class="project-icon-box" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
+      <!-- ПРОЕКТ 1: SOLANA MERCHANT DESK -->
+      <article class="card project-card project-card-featured anim-reveal" data-azm="120">
+        <div>
+          <div class="project-title-row">
+            <div class="project-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+                <circle cx="7" cy="15" r="1"></circle>
+              </svg>
+            </div>
+            <h3 data-i18n="prj_1">Solana Merchant Desk</h3>
           </div>
-          <h3 data-i18n="prj_1">Скоро будет</h3>
+          <p class="gothic-desc project-desc-text" data-i18n="prj_1_desc">
+            Некастодиальный платёжный терминал и рабочее место мерчанта для мгновенного приёма SOL, USDC и SPL-токенов без посредников и скрытых комиссий. Формирование счетов и QR-инвойсов в один клик, автоматическая ончейн-верификация транзакций в реальном времени и полный контроль средств напрямую на вашем кошельке.
+          </p>
+          <div class="project-tags-row">
+            <span class="project-tag-pill">Solana Pay</span>
+            <span class="project-tag-pill">Non-Custodial</span>
+            <span class="project-tag-pill">USDC / SPL</span>
+            <span class="project-tag-pill">Open Source</span>
+          </div>
         </div>
-        <p class="gothic-desc" style="color: var(--muted); margin-top: 8px;" data-i18n="prj_soon_desc">Раздел готовится к публикации, детали появятся позже.</p>
         <div class="project-footer-note">
-          <span>SLOT // 01</span>
-          <span data-i18n="prj_soon_badge">SOON</span>
+          <span>SLOT // 01 · LIVE</span>
+          <a href="https://github.com/Kaiserazimuth/solana-merchant-desk" target="_blank" rel="noopener noreferrer" class="project-repo-link" data-i18n="prj_1_cta">GitHub →</a>
         </div>
       </article>
 
@@ -1710,7 +1780,9 @@
       "compass_hint": "Наведите на карточку, нажмите на компас или поверните курс — координаты пересчитываются автоматически.",
       "status_open": "available for work and for talk :)",
       "sec_projects": "Проекты",
-      "prj_1": "Скоро будет",
+      "prj_1": "Solana Merchant Desk",
+      "prj_1_desc": "Некастодиальный платёжный терминал и рабочее место мерчанта для мгновенного приёма SOL, USDC и SPL-токенов без посредников и скрытых комиссий. Формирование счетов и QR-инвойсов в один клик, автоматическая ончейн-верификация транзакций в реальном времени и полный контроль средств напрямую на вашем кошельке.",
+      "prj_1_cta": "GitHub →",
       "prj_2": "Скоро будет",
       "prj_3": "Скоро будет",
       "prj_soon_desc": "Раздел готовится к публикации, детали появятся позже.",
@@ -1746,7 +1818,9 @@
             "compass_hint": "Hover a card, click the compass, or rotate the bearing — coordinates recalculate automatically.",
             "status_open": "available for work and for talk :)",
             "sec_projects": "Projects",
-            "prj_1": "Coming soon",
+            "prj_1": "Solana Merchant Desk",
+            "prj_1_desc": "Non-custodial payment terminal and merchant workspace for instant acceptance of SOL, USDC, and SPL tokens with zero intermediaries or hidden fees. One-click invoices and QR checkouts, automated real-time on-chain verification, and full self-custody directly in your wallet.",
+            "prj_1_cta": "GitHub →",
             "prj_2": "Coming soon",
             "prj_3": "Coming soon",
             "prj_soon_desc": "This section is being prepared for release; details will appear soon.",
@@ -1780,7 +1854,9 @@
             "compass_hint": "Karte berühren, Kompass klicken oder Kurs drehen – Koordinaten werden automatisch neu berechnet.",
             "status_open": "available for work and for talk :)",
             "sec_projects": "Projekte",
-            "prj_1": "Demnächst",
+            "prj_1": "Solana Merchant Desk",
+            "prj_1_desc": "Nicht-verwahrendes Zahlungsterminal und Händler-Workspace für die sofortige Annahme von SOL, USDC und SPL-Token ohne Zwischenhändler oder versteckte Gebühren. Rechnungen und QR-Checkouts mit einem Klick, automatische Echtzeit-On-Chain-Verifizierung und volle Selbstverwahrung direkt in Ihrer Wallet.",
+            "prj_1_cta": "GitHub →",
             "prj_2": "Demnächst",
             "prj_3": "Demnächst",
             "prj_soon_desc": "Dieser Bereich wird für die Veröffentlichung vorbereitet, Details folgen in Kürze.",
@@ -1814,7 +1890,9 @@
             "compass_hint": "悬停卡片、点击罗盘或调整方位角 —— 坐标将自动重新计算。",
             "status_open": "available for work and for talk :)",
             "sec_projects": "项目",
-            "prj_1": "即将上线",
+            "prj_1": "Solana Merchant Desk",
+            "prj_1_desc": "非托管加密支付终端与商户工作台，支持零中介、零隐藏费用即时接收 SOL、USDC 及 SPL 代币。一键生成账单与二维码收款码，实时自动链上交易核验，资金全程直达并完全掌控在您自己的钱包中。",
+            "prj_1_cta": "GitHub →",
             "prj_2": "即将上线",
             "prj_3": "即将上线",
             "prj_soon_desc": "该板块正在准备发布，详细信息将在稍后呈现。",
@@ -1848,7 +1926,9 @@
             "compass_hint": "Survolez une carte, cliquez sur la boussole ou tournez le cap — les coordonnées se recalculent automatiquement.",
             "status_open": "available for work and for talk :)",
             "sec_projects": "Projets",
-            "prj_1": "Bientôt disponible",
+            "prj_1": "Solana Merchant Desk",
+            "prj_1_desc": "Terminal de paiement non dépositaire et espace marchand pour accepter instantanément SOL, USDC et jetons SPL sans intermédiaires ni frais cachés. Création de factures et QR codes en un clic, vérification on-chain automatique en temps réel et contrôle total des fonds directement sur votre portefeuille.",
+            "prj_1_cta": "GitHub →",
             "prj_2": "Bientôt disponible",
             "prj_3": "Bientôt disponible",
             "prj_soon_desc": "Cette section est en préparation pour publication ; les détails arriveront bientôt.",
